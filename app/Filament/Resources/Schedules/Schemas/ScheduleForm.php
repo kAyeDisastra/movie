@@ -25,6 +25,7 @@ class ScheduleForm
                 DatePicker::make('show_date')
                     ->required(),
                 TimePicker::make('show_time')
+                    ->seconds(false)
                     ->required(),
                 Select::make('price_id')
                     ->columnSpanFull()

@@ -27,11 +27,6 @@ class ScheduleResource extends Resource
         return ScheduleForm::configure($schema);
     }
 
-    public static function infolist(Schema $schema): Schema
-    {
-        return ScheduleInfolist::configure($schema);
-    }
-
     public static function table(Table $table): Table
     {
         return SchedulesTable::configure($table);
@@ -49,7 +44,6 @@ class ScheduleResource extends Resource
         return [
             'index' => ListSchedules::route('/'),
             'create' => CreateSchedule::route('/create'),
-            'view' => ViewSchedule::route('/{record}'),
             'edit' => EditSchedule::route('/{record}/edit'),
         ];
     }

@@ -15,10 +15,10 @@ class SchedulesTable
     {
         return $table
             ->columns([
-                TextColumn::make('film_id')
+                TextColumn::make('film.title')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('studio_id')
+                TextColumn::make('studio.name')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('show_date')
@@ -27,10 +27,9 @@ class SchedulesTable
                 TextColumn::make('show_time')
                     ->time()
                     ->sortable(),
-                TextColumn::make('price_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_by')
+                TextColumn::make('price.amount')
+                    ->prefix('Rp. ')
+                    ->money('IDR')
                     ->numeric()
                     ->sortable(),
             ])
@@ -38,7 +37,6 @@ class SchedulesTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([
