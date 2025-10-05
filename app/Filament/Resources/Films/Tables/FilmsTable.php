@@ -18,16 +18,22 @@ class FilmsTable
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('genre')
-                    ->searchable(),
+                    ->searchable()
+                    ->badge(),
                 TextColumn::make('duration')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('status')
-                    ->badge(),
+                    ->formatStateUsing(fn (string $state): string =>
+                        str($state)->replace('_', ' ')->title()
+                    )
+                    ->badge()
+                    ->colors([
+                        'warning' => 'coming_soon',
+                        'success' => 'play_now',
+                        'gray'    => 'history',
+                    ]),
                 ImageColumn::make('poster_image'),
-                TextColumn::make('created_by')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Film extends Model
 {
-    //
+    protected $fillable = [
+        'title',
+        'genre',
+        'duration',
+        'description',
+        'status',
+        'poster_image',
+        'created_by'
+    ];
+
+    protected $casts = [
+        'genre' => 'array',
+    ];
 }
