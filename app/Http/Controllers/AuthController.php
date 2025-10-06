@@ -38,9 +38,9 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-        if ($user->role == 'kasir') {
+        if ($user->role == 'cashier') {
             return 'kasir';
-        } else if ($user->role == 'user') {
+        } else if ($user->role == 'customer') {
             return 'user';
         } else {
             Auth::logout();
