@@ -16,6 +16,13 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('login.post') }}">
                             @csrf
+                            @if(Session::has('success'))
+                                <div class="mb-3">
+                                    <div class="alert alert-success" role="alert">
+                                        {{ Session::get('success')  }}
+                                    </div>
+                                </div>
+                            @endif
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required autofocus>
