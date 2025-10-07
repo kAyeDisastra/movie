@@ -13,3 +13,10 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
     Route::post('/register', 'register')->name('register.post');
     Route::post('/logout', 'logout')->name('logout')->middleware('auth');
 });
+
+
+Route::prefix('movies')->middleware('auth')->group(function () {
+    Route::controller(\App\Http\Controllers\Movie\MovieDashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('movies.dashboard');
+    });
+});

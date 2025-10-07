@@ -19,4 +19,9 @@ class Film extends Model
     protected $casts = [
         'genre' => 'array',
     ];
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

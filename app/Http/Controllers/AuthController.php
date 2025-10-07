@@ -39,7 +39,7 @@ class AuthController extends Controller
 
         $user = Auth::user();
         if ($user->role == 'cashier') {
-            return 'kasir';
+            return redirect()->route('movies.dashboard');
         } else if ($user->role == 'customer') {
             return 'user';
         } else {
