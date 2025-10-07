@@ -44,7 +44,7 @@
                                 <div class="d-flex flex-wrap">
                                     @foreach ($item->schedules as $schedule)
                                         <a href="" class="btn btn-light me-2 mb-2">
-                                            {{ \Carbon\Carbon::parse($schedule->time)->format('H:i') }}
+                                            {{ \Carbon\Carbon::parse($schedule->show_time)->format('H:i') }}
                                         </a>
                                     @endforeach
                                 </div>
