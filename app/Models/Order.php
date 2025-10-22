@@ -8,9 +8,15 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id',
-        'total_amount',
-        'status'
+        'schedule_id',
+        'order_time',
+        'status',
+        'cashier_id'
     ];
+    
+    public $timestamps = false;
+    
+    protected $dates = ['created_at'];
     
     public function orderDetails()
     {

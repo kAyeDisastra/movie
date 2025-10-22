@@ -10,9 +10,10 @@ class Payment extends Model
     
     protected $fillable = [
         'order_id',
-        'amount',
         'payment_method',
-        'status'
+        'total_amount',
+        'status',
+        'payment_time'
     ];
     
     public function order()

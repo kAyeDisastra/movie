@@ -10,9 +10,7 @@ class OrderDetail extends Model
     
     protected $fillable = [
         'order_id',
-        'schedule_id',
-        'seat_code',
-        'price'
+        'seat_id'
     ];
     
     public function order()
