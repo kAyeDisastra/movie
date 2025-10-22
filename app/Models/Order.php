@@ -16,7 +16,10 @@ class Order extends Model
     
     public $timestamps = false;
     
-    protected $dates = ['created_at'];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'order_time' => 'datetime'
+    ];
     
     public function orderDetails()
     {

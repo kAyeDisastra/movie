@@ -21,19 +21,19 @@
                         </div>
                         <div class="card-body">
                             <div class="row justify-content-center">
-                                @foreach($seats as $seat)
+                                @foreach($seats as $index => $seat)
                                     <div class="col-1 mb-2">
-                                        @if(in_array($seat, $bookedSeats))
+                                        @if(in_array($seat->id, $bookedSeatIds))
                                             <button class="btn btn-secondary btn-sm w-100" disabled>
-                                                {{ $seat }}
+                                                {{ $seat->seat_code }}
                                             </button>
                                         @else
-                                            <button class="btn btn-outline-success btn-sm w-100 seat-btn" data-seat="{{ $seat }}">
-                                                {{ $seat }}
+                                            <button class="btn btn-outline-success btn-sm w-100 seat-btn" data-seat-id="{{ $seat->id }}" data-seat-code="{{ $seat->seat_code }}">
+                                                {{ $seat->seat_code }}
                                             </button>
                                         @endif
                                     </div>
-                                    @if($seat % 7 == 0)
+                                    @if(($index + 1) % 10 == 0)
                                         </div><div class="row justify-content-center">
                                     @endif
                                 @endforeach
@@ -55,8 +55,12 @@
                             <h5>Info Studio</h5>
                         </div>
                         <div class="card-body">
+                            <p><strong>Film:</strong> {{ $schedule->film->title ?? '-' }}</p>
                             <p><strong>Nama:</strong> {{ $studio->name }}</p>
                             <p><strong>Kapasitas:</strong> {{ $studio->capacity }} kursi</p>
+                            <p><strong>Tanggal:</strong> {{ $schedule->show_date }}</p>
+                            <p><strong>Jam:</strong> {{ $schedule->show_time }}</p>
+                            <p><strong>Harga:</strong> Rp {{ number_format($schedule->price->amount, 0, ',', '.') }}</p>
                             <div class="mt-3">
                                 <div class="d-flex align-items-center mb-2">
                                     <div class="btn btn-outline-success btn-sm me-2" style="width: 30px; height: 30px;"></div>
@@ -81,26 +85,33 @@
 
 @push('js')
 <script>
+console.log('Script loaded');
 let selectedSeats = [];
 
-document.querySelectorAll('.seat-btn').forEach(btn => {
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, finding seat buttons...');
+    const seatButtons = document.querySelectorAll('.seat-btn');
+    console.log('Found', seatButtons.length, 'seat buttons');
+    
+    seatButtons.forEach(btn => {
     btn.addEventListener('click', function() {
         if (!this.disabled) {
-            const seatNumber = parseInt(this.dataset.seat);
+            const seatId = parseInt(this.dataset.seatId);
             
             if (this.classList.contains('btn-outline-success')) {
                 this.classList.remove('btn-outline-success');
                 this.classList.add('btn-success');
-                selectedSeats.push(seatNumber);
+                selectedSeats.push(seatId);
             } else if (this.classList.contains('btn-success')) {
                 this.classList.remove('btn-success');
                 this.classList.add('btn-outline-success');
-                selectedSeats = selectedSeats.filter(seat => seat !== seatNumber);
+                selectedSeats = selectedSeats.filter(seat => seat !== seatId);
             }
             
             updateBookingInfo();
         }
     });
+});
 });
 
 function updateBookingInfo() {
@@ -118,22 +129,29 @@ function bookSeats() {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
         },
         body: JSON.stringify({
-            studio_id: {{ $studio->id }},
-            seats: selectedSeats
+            schedule_id: {{ $schedule->id }},
+            seat_ids: selectedSeats
         })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            selectedSeats.forEach(seatNumber => {
-                const seatBtn = document.querySelector(`[data-seat="${seatNumber}"]`);
+            selectedSeats.forEach(seatId => {
+                const seatBtn = document.querySelector(`[data-seat-id="${seatId}"]`);
                 seatBtn.className = 'btn btn-secondary btn-sm w-100';
                 seatBtn.disabled = true;
             });
             
             selectedSeats = [];
             updateBookingInfo();
-            alert('Kursi berhasil dibooking!');
+            alert('Tiket berhasil dibeli!');
+            
+            // Redirect to transactions page
+            setTimeout(() => {
+                window.location.href = '{{ route("transactions") }}';
+            }, 1500);
+        } else {
+            alert(data.message || 'Gagal membeli tiket');
         }
     })
     .catch(error => {

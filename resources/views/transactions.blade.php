@@ -17,7 +17,7 @@
                                 {{ ucfirst($transaction->status) }}
                             </span>
                         </div>
-                        <small class="text-muted">{{ $transaction->created_at->format('d M Y, H:i') }}</small>
+                        <small class="text-muted">{{ \Carbon\Carbon::parse($transaction->created_at)->format('d M Y, H:i') }}</small>
                     </div>
                     <div class="card-body">
                         @foreach($transaction->orderDetails as $detail)

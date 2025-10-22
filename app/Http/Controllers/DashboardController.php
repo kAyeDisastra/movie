@@ -9,7 +9,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $films = Film::with(['schedules.studio'])->get();
+        $films = Film::with(['schedules.studio', 'schedules.price'])
+            ->whereHas('schedules', function($query) {
+                $query->where('show_date', '>=', today());
+            })
+            ->where('status', 'play_now')
+            ->get();
    
         return view('dashboard', compact('films'));
     }

@@ -14,32 +14,54 @@ class BookingController extends Controller
 {
     public function store(Request $request)
     {
-        $studioId = $request->studio_id;
-        $seats = $request->seats;
+        $request->validate([
+            'schedule_id' => 'required|exists:schedules,id',
+            'seat_ids' => 'required|array',
+            'seat_ids.*' => 'exists:seats,id'
+        ]);
         
         DB::beginTransaction();
         try {
+            // Get schedule and price
+            $schedule = Schedule::with('price')->findOrFail($request->schedule_id);
+            $seatIds = $request->seat_ids;
+            
+            // Check if seats are available
+            $unavailableSeats = DB::table('seats')
+                ->whereIn('id', $seatIds)
+                ->where('status', '!=', 'available')
+                ->count();
+                
+            if ($unavailableSeats > 0) {
+                return response()->json(['success' => false, 'message' => 'Beberapa kursi sudah tidak tersedia']);
+            }
+            
             // Create order
             $order = Order::create([
                 'user_id' => Auth::id(),
-                'schedule_id' => $request->schedule_id ?? 1,
+                'schedule_id' => $schedule->id,
                 'order_time' => now(),
                 'status' => 'pending',
                 'created_at' => now()
             ]);
             
-            // Create order details for each seat
-            foreach ($seats as $seatId) {
+            // Create order details and update seat status
+            foreach ($seatIds as $seatId) {
                 OrderDetail::create([
                     'order_id' => $order->id,
                     'seat_id' => $seatId
                 ]);
+                
+                // Update seat status to booked
+                DB::table('seats')->where('id', $seatId)->update(['status' => 'booked']);
             }
+            
+            $totalAmount = $schedule->price->amount * count($seatIds);
             
             // Create payment
             Payment::create([
                 'order_id' => $order->id,
-                'total_amount' => count($seats) * 50000,
+                'total_amount' => $totalAmount,
                 'payment_method' => 'cash',
                 'status' => 'completed',
                 'payment_time' => now()
@@ -48,16 +70,11 @@ class BookingController extends Controller
             // Update order status
             $order->update(['status' => 'confirmed']);
             
-            // Store booked seats in session
-            $bookedSeats = session()->get("booked_seats_studio_{$studioId}", []);
-            $bookedSeats = array_merge($bookedSeats, $seats);
-            session()->put("booked_seats_studio_{$studioId}", array_unique($bookedSeats));
-            
             DB::commit();
             return response()->json(['success' => true, 'message' => 'Tiket berhasil dibeli!']);
         } catch (\Exception $e) {
             DB::rollback();
-            return response()->json(['success' => false, 'message' => 'Gagal membeli tiket']);
+            return response()->json(['success' => false, 'message' => 'Gagal membeli tiket: ' . $e->getMessage()]);
         }
     }
 }

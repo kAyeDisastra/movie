@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="d-flex flex-wrap">
                                             @foreach ($item->schedules as $schedule)
-                                                <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm me-1 mb-1">
+                                                <a href="{{ route('studios.show', ['id' => $schedule->studio_id, 'schedule_id' => $schedule->id]) }}" class="btn btn-outline-primary btn-sm me-1 mb-1">
                                                     {{ \Carbon\Carbon::parse($schedule->show_time)->format('H:i') }}
                                                 </a>
                                             @endforeach
