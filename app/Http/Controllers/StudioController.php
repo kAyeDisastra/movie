@@ -18,8 +18,6 @@ class StudioController extends Controller
     public function show($id, Request $request)
     {
         $studio = Studio::findOrFail($id);
-        
-        // Get schedule ID from request or find first available schedule
         $scheduleId = $request->get('schedule_id');
         
         if ($scheduleId) {
@@ -28,7 +26,6 @@ class StudioController extends Controller
                 ->with(['seats', 'film', 'price'])
                 ->first();
         } else {
-            // Get any available schedule for this studio
             $schedule = Schedule::where('studio_id', $id)
                 ->where('show_date', '>=', today())
                 ->with(['seats', 'film', 'price'])

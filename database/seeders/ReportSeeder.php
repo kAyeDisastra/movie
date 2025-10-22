@@ -19,7 +19,7 @@ class ReportSeeder extends Seeder
         Report::insert([
             'period' => Carbon::now()->format('Y-m'),
             'total_income' => $totalIncome,
-            'total_expense' => $totalIncome * 0.3,
+            'total_expense' => $totalIncome * 0.3, // 30% dari income
             'owner_id' => $owner->id,
         ]);
     }

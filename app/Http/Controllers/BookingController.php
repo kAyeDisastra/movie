@@ -22,11 +22,9 @@ class BookingController extends Controller
         
         DB::beginTransaction();
         try {
-            // Get schedule and price
             $schedule = Schedule::with('price')->findOrFail($request->schedule_id);
             $seatIds = $request->seat_ids;
             
-            // Check if seats are available
             $unavailableSeats = DB::table('seats')
                 ->whereIn('id', $seatIds)
                 ->where('status', '!=', 'available')
@@ -36,7 +34,6 @@ class BookingController extends Controller
                 return response()->json(['success' => false, 'message' => 'Beberapa kursi sudah tidak tersedia']);
             }
             
-            // Create order
             $order = Order::create([
                 'user_id' => Auth::id(),
                 'schedule_id' => $schedule->id,
@@ -45,20 +42,17 @@ class BookingController extends Controller
                 'created_at' => now()
             ]);
             
-            // Create order details and update seat status
             foreach ($seatIds as $seatId) {
                 OrderDetail::create([
                     'order_id' => $order->id,
                     'seat_id' => $seatId
                 ]);
                 
-                // Update seat status to booked
                 DB::table('seats')->where('id', $seatId)->update(['status' => 'booked']);
             }
             
             $totalAmount = $schedule->price->amount * count($seatIds);
             
-            // Create payment
             Payment::create([
                 'order_id' => $order->id,
                 'total_amount' => $totalAmount,
@@ -67,7 +61,6 @@ class BookingController extends Controller
                 'payment_time' => now()
             ]);
             
-            // Update order status
             $order->update(['status' => 'confirmed']);
             
             DB::commit();

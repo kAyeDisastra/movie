@@ -85,13 +85,10 @@
 
 @push('js')
 <script>
-console.log('Script loaded');
 let selectedSeats = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, finding seat buttons...');
     const seatButtons = document.querySelectorAll('.seat-btn');
-    console.log('Found', seatButtons.length, 'seat buttons');
     
     seatButtons.forEach(btn => {
     btn.addEventListener('click', function() {
@@ -146,7 +143,6 @@ function bookSeats() {
             updateBookingInfo();
             alert('Tiket berhasil dibeli!');
             
-            // Redirect to transactions page
             setTimeout(() => {
                 window.location.href = '{{ route("transactions") }}';
             }, 1500);
