@@ -48,7 +48,10 @@
                             @endif
                             <div class="mb-3">
                                 <button class="btn btn-primary w-100">Login</button>
-                                <p class="text-center">No have account? <a href="{{ route('register')  }}" class="btn-link">Register here</a></p>
+                                <div class="text-center mt-3">
+                                    <a href="{{ route('dashboard') }}" class="btn btn-outline-secondary me-2">Back to Dashboard</a>
+                                    <span>No have account? <a href="{{ route('register')  }}" class="btn-link">Register here</a></span>
+                                </div>
                             </div>
                         </form>
                     </div>

@@ -38,14 +38,11 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-        if ($user->role == 'cashier') {
-            return redirect()->route('movies.dashboard');
-        } else if ($user->role == 'customer') {
-            return 'user';
-        } else {
-            Auth::logout();
-            return redirect()->back()->with('error', 'Email or Password is incorrect');
+        if ($user->role == 'admin') {
+            return redirect('/admin');
         }
+        
+        return redirect()->route('dashboard');
     }
 
     public function register(Request $request)
@@ -74,6 +71,6 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login');
+        return redirect()->route('dashboard');
     }
 }
