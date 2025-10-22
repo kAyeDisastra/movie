@@ -25,7 +25,7 @@
                             
                             <div class="row mb-3">
                                 <div class="col-sm-3"><strong>Genre:</strong></div>
-                                <div class="col-sm-9">{{ implode(', ', $film->genre ?? []) }}</div>
+                                <div class="col-sm-9">{{ is_array($film->genre) ? implode(', ', $film->genre) : (is_string($film->genre) ? $film->genre : '-') }}</div>
                             </div>
                             
                             <div class="row mb-3">

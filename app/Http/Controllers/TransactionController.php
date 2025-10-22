@@ -11,7 +11,7 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = Order::where('user_id', Auth::id())
-            ->with(['orderDetails.schedule.film', 'orderDetails.schedule.studio', 'payment'])
+            ->with(['orderDetails.seat.schedule.film', 'orderDetails.seat.schedule.studio', 'payment', 'schedule'])
             ->orderBy('created_at', 'desc')
             ->get();
             

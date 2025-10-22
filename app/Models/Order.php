@@ -32,4 +32,14 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class);
+    }
+    
+    public function cashier()
+    {
+        return $this->belongsTo(User::class, 'cashier_id');
+    }
 }

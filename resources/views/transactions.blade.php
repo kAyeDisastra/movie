@@ -13,7 +13,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div>
                             <strong>Order #{{ $transaction->id }}</strong>
-                            <span class="badge bg-{{ $transaction->status == 'completed' ? 'success' : 'warning' }}">
+                            <span class="badge bg-{{ $transaction->status == 'confirmed' ? 'success' : 'warning' }}">
                                 {{ ucfirst($transaction->status) }}
                             </span>
                         </div>
@@ -23,16 +23,16 @@
                         @foreach($transaction->orderDetails as $detail)
                             <div class="row mb-2">
                                 <div class="col-md-8">
-                                    <h6>{{ $detail->schedule->film->title ?? 'Film tidak ditemukan' }}</h6>
+                                    <h6>{{ $detail->seat->schedule->film->title ?? 'Film tidak ditemukan' }}</h6>
                                     <small class="text-muted">
-                                        Studio: {{ $detail->schedule->studio->name ?? '-' }} | 
-                                        Kursi: {{ $detail->seat_code }} | 
-                                        Tanggal: {{ \Carbon\Carbon::parse($detail->schedule->show_date)->format('d M Y') }} | 
-                                        Jam: {{ \Carbon\Carbon::parse($detail->schedule->show_time)->format('H:i') }}
+                                        Studio: {{ $detail->seat->schedule->studio->name ?? '-' }} | 
+                                        Kursi: {{ $detail->seat->seat_code ?? '-' }} | 
+                                        Tanggal: {{ \Carbon\Carbon::parse($detail->seat->schedule->show_date)->format('d M Y') }} | 
+                                        Jam: {{ \Carbon\Carbon::parse($detail->seat->schedule->show_time)->format('H:i') }}
                                     </small>
                                 </div>
                                 <div class="col-md-4 text-end">
-                                    <strong>Rp {{ number_format($detail->price, 0, ',', '.') }}</strong>
+                                    <strong>Rp {{ number_format($detail->seat->schedule->price->amount ?? 50000, 0, ',', '.') }}</strong>
                                 </div>
                             </div>
                         @endforeach
@@ -42,7 +42,7 @@
                                 <strong>Total</strong>
                             </div>
                             <div class="col-md-4 text-end">
-                                <strong>Rp {{ number_format($transaction->total_amount, 0, ',', '.') }}</strong>
+                                <strong>Rp {{ number_format($transaction->payment->total_amount ?? 0, 0, ',', '.') }}</strong>
                             </div>
                         </div>
                     </div>

@@ -22,4 +22,9 @@ class OrderDetail extends Model
     {
         return $this->belongsTo(Schedule::class);
     }
+    
+    public function seat()
+    {
+        return $this->belongsTo(Seat::class);
+    }
 }

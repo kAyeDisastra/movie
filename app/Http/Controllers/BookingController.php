@@ -22,30 +22,31 @@ class BookingController extends Controller
             // Create order
             $order = Order::create([
                 'user_id' => Auth::id(),
-                'total_amount' => count($seats) * 50000, // Rp 50,000 per seat
-                'status' => 'pending'
+                'schedule_id' => $request->schedule_id ?? 1,
+                'order_time' => now(),
+                'status' => 'pending',
+                'created_at' => now()
             ]);
             
             // Create order details for each seat
-            foreach ($seats as $seat) {
+            foreach ($seats as $seatId) {
                 OrderDetail::create([
                     'order_id' => $order->id,
-                    'schedule_id' => 1, // Demo schedule ID
-                    'seat_code' => (string)$seat,
-                    'price' => 50000
+                    'seat_id' => $seatId
                 ]);
             }
             
             // Create payment
             Payment::create([
                 'order_id' => $order->id,
-                'amount' => $order->total_amount,
+                'total_amount' => count($seats) * 50000,
                 'payment_method' => 'cash',
-                'status' => 'completed'
+                'status' => 'completed',
+                'payment_time' => now()
             ]);
             
             // Update order status
-            $order->update(['status' => 'completed']);
+            $order->update(['status' => 'confirmed']);
             
             // Store booked seats in session
             $bookedSeats = session()->get("booked_seats_studio_{$studioId}", []);

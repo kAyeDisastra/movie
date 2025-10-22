@@ -31,7 +31,7 @@
 
                                         <div class="row">
                                             <div class="col text-muted">Genre</div>
-                                            <div class="col">{{ implode(', ', $item->genre ?? []) }}</div>
+                                            <div class="col">{{ is_array($item->genre) ? implode(', ', $item->genre) : (is_string($item->genre) ? $item->genre : '-') }}</div>
                                         </div>
 
                                         <div class="row">

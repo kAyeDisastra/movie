@@ -23,7 +23,7 @@
                                             <h5 class="card-title text-dark">{{ $item->title }}</h5>
                                         </a>
                                         <p class="card-text">
-                                            <small class="text-muted">Genre: {{ implode(', ', $item->genre ?? []) }}</small><br>
+                                            <small class="text-muted">Genre: {{ is_array($item->genre) ? implode(', ', $item->genre) : (is_string($item->genre) ? $item->genre : '-') }}</small><br>
                                             <small class="text-muted">Durasi: {{ $item->duration }} menit</small>
                                         </p>
                                         <div class="mb-2">
