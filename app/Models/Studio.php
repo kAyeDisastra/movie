@@ -13,4 +13,14 @@ class Studio extends Model
         'capacity',
         'created_by'
     ];
+
+    public function seats()
+    {
+        return $this->hasManyThrough(Seat::class, Schedule::class);
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

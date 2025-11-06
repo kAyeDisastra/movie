@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Studio Detail')
 
+@push('head')
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+@endpush
+
 @section('content')
     @include('components.navbar')
 
@@ -25,6 +29,10 @@
                                     <div class="col-1 mb-2">
                                         @if(in_array($seat->id, $bookedSeatIds))
                                             <button class="btn btn-secondary btn-sm w-100" disabled>
+                                                {{ $seat->seat_code }}
+                                            </button>
+                                        @elseif(in_array($seat->id, $reservedSeatIds))
+                                            <button class="btn btn-warning btn-sm w-100" disabled>
                                                 {{ $seat->seat_code }}
                                             </button>
                                         @else
@@ -70,6 +78,10 @@
                                     <div class="btn btn-success btn-sm me-2" style="width: 30px; height: 30px;"></div>
                                     <small>Dipilih</small>
                                 </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div class="btn btn-warning btn-sm me-2" style="width: 30px; height: 30px;"></div>
+                                    <small>Dipesan (1 jam)</small>
+                                </div>
                                 <div class="d-flex align-items-center">
                                     <div class="btn btn-secondary btn-sm me-2" style="width: 30px; height: 30px;"></div>
                                     <small>Terisi</small>
@@ -91,24 +103,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const seatButtons = document.querySelectorAll('.seat-btn');
     
     seatButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-        if (!this.disabled) {
-            const seatId = parseInt(this.dataset.seatId);
-            
-            if (this.classList.contains('btn-outline-success')) {
-                this.classList.remove('btn-outline-success');
-                this.classList.add('btn-success');
-                selectedSeats.push(seatId);
-            } else if (this.classList.contains('btn-success')) {
-                this.classList.remove('btn-success');
-                this.classList.add('btn-outline-success');
-                selectedSeats = selectedSeats.filter(seat => seat !== seatId);
+        btn.addEventListener('click', function() {
+            if (!this.disabled) {
+                const seatId = parseInt(this.dataset.seatId);
+                const seatCode = this.dataset.seatCode;
+                
+                if (this.classList.contains('btn-outline-success')) {
+                    this.classList.remove('btn-outline-success');
+                    this.classList.add('btn-success');
+                    selectedSeats.push({id: seatId, code: seatCode});
+                } else if (this.classList.contains('btn-success')) {
+                    this.classList.remove('btn-success');
+                    this.classList.add('btn-outline-success');
+                    selectedSeats = selectedSeats.filter(seat => seat.id !== seatId);
+                }
+                
+                updateBookingInfo();
             }
-            
-            updateBookingInfo();
-        }
+        });
     });
-});
 });
 
 function updateBookingInfo() {
@@ -117,7 +130,16 @@ function updateBookingInfo() {
 }
 
 function bookSeats() {
-    if (selectedSeats.length === 0) return;
+    console.log('bookSeats called');
+    console.log('selectedSeats:', selectedSeats);
+    
+    if (selectedSeats.length === 0) {
+        console.log('No seats selected');
+        return;
+    }
+    
+    const seatIds = selectedSeats.map(seat => seat.id);
+    console.log('seatIds:', seatIds);
     
     fetch('{{ route("booking.store") }}', {
         method: 'POST',
@@ -127,33 +149,88 @@ function bookSeats() {
         },
         body: JSON.stringify({
             schedule_id: {{ $schedule->id }},
-            seat_ids: selectedSeats
+            seat_ids: seatIds
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Booking response:', response);
+        return response.json();
+    })
     .then(data => {
+        console.log('Booking data:', data);
         if (data.success) {
-            selectedSeats.forEach(seatId => {
-                const seatBtn = document.querySelector(`[data-seat-id="${seatId}"]`);
-                seatBtn.className = 'btn btn-secondary btn-sm w-100';
-                seatBtn.disabled = true;
+            console.log('Creating payment...');
+            fetch('{{ route("payment.create") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    total_amount: data.total_amount,
+                    price_per_seat: data.price_per_seat,
+                    seat_ids: data.seat_ids,
+                    film_title: data.film_title
+                })
+            })
+            .then(response => {
+                console.log('Payment response:', response);
+                if (!response.ok) {
+                    throw new Error('Payment request failed');
+                }
+                return response.json();
+            })
+            .then(paymentData => {
+                console.log('Payment data:', paymentData);
+                if (paymentData.error) {
+                    throw new Error(paymentData.message);
+                }
+                console.log('Calling Midtrans snap.pay...');
+                snap.pay(paymentData.snap_token, {
+                    onSuccess: function(result) {
+                        fetch('{{ route("booking.confirm") }}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            body: JSON.stringify({
+                                order_id: data.order_id
+                            })
+                        })
+                        .then(() => {
+                            selectedSeats.forEach(seat => {
+                                const seatBtn = document.querySelector(`[data-seat-id="${seat.id}"]`);
+                                if (seatBtn) {
+                                    seatBtn.className = 'btn btn-secondary btn-sm w-100';
+                                    seatBtn.disabled = true;
+                                }
+                            });
+                            
+                            selectedSeats = [];
+                            updateBookingInfo();
+                            alert('Pembayaran berhasil!');
+                            window.location.href = '{{ route("transactions") }}';
+                        });
+                    },
+                    onPending: function(result) {
+                        alert('Pembayaran pending');
+                    },
+                    onError: function(result) {
+                        alert('Pembayaran gagal!');
+                    }
+                });
             });
-            
-            selectedSeats = [];
-            updateBookingInfo();
-            alert('Tiket berhasil dibeli!');
-            
-            setTimeout(() => {
-                window.location.href = '{{ route("transactions") }}';
-            }, 1500);
         } else {
-            alert(data.message || 'Gagal membeli tiket');
+            alert(data.message || 'Gagal membuat pesanan');
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Terjadi kesalahan saat booking kursi');
+        console.error('Booking Error:', error);
+        alert('Terjadi kesalahan: ' + error.message);
     });
+    
+    console.log('bookSeats function completed');
 }
 </script>
 @endpush

@@ -11,7 +11,9 @@
 
     <title>{{ config('app.name') }} | @yield('title')</title>
 </head>
-<body class="w-100 min-vh-100 d-flex align-items-center justify-content-center">
+<body>
+    <x-navbar />
+    
     @yield('content')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

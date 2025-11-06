@@ -20,8 +20,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/studios', [\App\Http\Controllers\StudioController::class, 'index'])->name('studios');
     Route::get('/studios/{id}', [\App\Http\Controllers\StudioController::class, 'show'])->name('studios.show');
     Route::post('/booking', [\App\Http\Controllers\BookingController::class, 'store'])->name('booking.store');
+    Route::post('/booking/confirm', [\App\Http\Controllers\BookingController::class, 'confirmPayment'])->name('booking.confirm');
+    Route::post('/payment/create', [\App\Http\Controllers\PaymentController::class, 'createPayment'])->name('payment.create');
     Route::get('/transactions', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
 });
+
+Route::post('/payment/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
 
 Route::prefix('movies')->middleware('auth')->group(function () {
     Route::controller(\App\Http\Controllers\Movie\MovieDashboardController::class)->group(function () {

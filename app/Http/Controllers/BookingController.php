@@ -22,7 +22,7 @@ class BookingController extends Controller
         
         DB::beginTransaction();
         try {
-            $schedule = Schedule::with('price')->findOrFail($request->schedule_id);
+            $schedule = Schedule::with(['price', 'film'])->findOrFail($request->schedule_id);
             $seatIds = $request->seat_ids;
             
             $unavailableSeats = DB::table('seats')
@@ -34,40 +34,77 @@ class BookingController extends Controller
                 return response()->json(['success' => false, 'message' => 'Beberapa kursi sudah tidak tersedia']);
             }
             
+            $totalAmount = $schedule->price->price * count($seatIds);
+            $orderId = 'ORDER-' . time() . '-' . Auth::id();
+            
             $order = Order::create([
                 'user_id' => Auth::id(),
                 'schedule_id' => $schedule->id,
                 'order_time' => now(),
                 'status' => 'pending',
-                'created_at' => now()
+                'order_id' => $orderId
             ]);
             
+            // Reserve seats for 1 hour
+            $reservedUntil = now()->addHour();
             foreach ($seatIds as $seatId) {
                 OrderDetail::create([
                     'order_id' => $order->id,
                     'seat_id' => $seatId
                 ]);
                 
-                DB::table('seats')->where('id', $seatId)->update(['status' => 'booked']);
+                DB::table('seats')->where('id', $seatId)->update([
+                    'status' => 'reserved',
+                    'reserved_until' => $reservedUntil
+                ]);
             }
-            
-            $totalAmount = $schedule->price->amount * count($seatIds);
             
             Payment::create([
                 'order_id' => $order->id,
                 'total_amount' => $totalAmount,
-                'payment_method' => 'cash',
-                'status' => 'completed',
-                'payment_time' => now()
+                'payment_method' => 'midtrans',
+                'status' => 'pending'
             ]);
             
-            $order->update(['status' => 'confirmed']);
-            
             DB::commit();
-            return response()->json(['success' => true, 'message' => 'Tiket berhasil dibeli!']);
+            
+            return response()->json([
+                'success' => true,
+                'order_id' => $orderId,
+                'total_amount' => $totalAmount,
+                'price_per_seat' => $schedule->price->price,
+                'film_title' => $schedule->film->title,
+                'seat_ids' => $seatIds
+            ]);
         } catch (\Exception $e) {
             DB::rollback();
             return response()->json(['success' => false, 'message' => 'Gagal membeli tiket: ' . $e->getMessage()]);
+        }
+    }
+    
+    public function confirmPayment(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $order = Order::where('order_id', $request->order_id)->first();
+            
+            if ($order) {
+                $orderDetails = OrderDetail::where('order_id', $order->id)->get();
+                foreach ($orderDetails as $detail) {
+                    DB::table('seats')->where('id', $detail->seat_id)->update(['status' => 'booked']);
+                }
+                
+                $order->update(['status' => 'confirmed']);
+                
+                Payment::where('order_id', $order->id)
+                    ->update(['status' => 'completed', 'payment_time' => now()]);
+            }
+            
+            DB::commit();
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
     }
 }

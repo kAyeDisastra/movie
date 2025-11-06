@@ -36,9 +36,16 @@ class StudioController extends Controller
             return redirect()->route('studios')->with('error', 'Tidak ada jadwal untuk studio ini');
         }
         
-        $seats = $schedule->seats;
-        $bookedSeatIds = $seats->where('status', '!=', 'available')->pluck('id')->toArray();
+        // Clean expired reservations
+        \DB::table('seats')
+            ->where('status', 'reserved')
+            ->where('reserved_until', '<', now())
+            ->update(['status' => 'available', 'reserved_until' => null]);
+            
+        $seats = $schedule->seats()->get();
+        $bookedSeatIds = $seats->where('status', 'booked')->pluck('id')->toArray();
+        $reservedSeatIds = $seats->where('status', 'reserved')->pluck('id')->toArray();
         
-        return view('studio-detail', compact('studio', 'seats', 'bookedSeatIds', 'schedule'));
+        return view('studio-detail', compact('studio', 'seats', 'bookedSeatIds', 'reservedSeatIds', 'schedule'));
     }
 }

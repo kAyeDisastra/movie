@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignIdFor(App\Models\Schedule::class)->constrained()->cascadeOnDelete();
             $table->string('seat_code');
             $table->enum('status', ['available', 'booked', 'reserved'])->default('available');
+            $table->timestamp('reserved_until')->nullable();
         });
     }
 
