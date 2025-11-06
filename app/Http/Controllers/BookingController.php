@@ -34,7 +34,7 @@ class BookingController extends Controller
                 return response()->json(['success' => false, 'message' => 'Beberapa kursi sudah tidak tersedia']);
             }
             
-            $totalAmount = $schedule->price->price * count($seatIds);
+            $totalAmount = $schedule->price->amount * count($seatIds);
             $orderId = 'ORDER-' . time() . '-' . Auth::id();
             
             $order = Order::create([
@@ -45,8 +45,8 @@ class BookingController extends Controller
                 'order_id' => $orderId
             ]);
             
-            // Reserve seats for 1 hour
-            $reservedUntil = now()->addHour();
+            // Set seats to pending for 1 hour
+            $expiredAt = now()->addHour();
             foreach ($seatIds as $seatId) {
                 OrderDetail::create([
                     'order_id' => $order->id,
@@ -54,8 +54,9 @@ class BookingController extends Controller
                 ]);
                 
                 DB::table('seats')->where('id', $seatId)->update([
-                    'status' => 'reserved',
-                    'reserved_until' => $reservedUntil
+                    'status' => 'pending',
+                    'user_id' => Auth::id(),
+                    'expired_at' => $expiredAt
                 ]);
             }
             
@@ -72,7 +73,7 @@ class BookingController extends Controller
                 'success' => true,
                 'order_id' => $orderId,
                 'total_amount' => $totalAmount,
-                'price_per_seat' => $schedule->price->price,
+                'price_per_seat' => $schedule->price->amount,
                 'film_title' => $schedule->film->title,
                 'seat_ids' => $seatIds
             ]);
@@ -91,7 +92,10 @@ class BookingController extends Controller
             if ($order) {
                 $orderDetails = OrderDetail::where('order_id', $order->id)->get();
                 foreach ($orderDetails as $detail) {
-                    DB::table('seats')->where('id', $detail->seat_id)->update(['status' => 'booked']);
+                    DB::table('seats')->where('id', $detail->seat_id)->update([
+                        'status' => 'booked',
+                        'expired_at' => null
+                    ]);
                 }
                 
                 $order->update(['status' => 'confirmed']);

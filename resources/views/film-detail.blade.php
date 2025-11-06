@@ -96,7 +96,16 @@ body{background:var(--bg-1);color:#e6eef8;font-family:Inter,system-ui,-apple-sys
     <div class="container">
         <div class="detail-content">
             <div class="poster">
-                <img src="{{ asset('storage/' . $film->poster_image) }}" alt="{{ $film->title }}">
+                @php
+                    $posterMap = [
+                        'Avengers: Endgame' => 'images/avengers-endgame.jpg',
+                        'Spider-Man: No Way Home' => 'images/spiderman-nwh.jpg', 
+                        'The Batman' => 'images/the-batman.jpg',
+                        'Shawshank Redemption' => 'images/shawshank.jpg'
+                    ];
+                    $posterPath = $posterMap[$film->title] ?? 'images/placeholder.svg';
+                @endphp
+                <img src="{{ asset($posterPath) }}" alt="{{ $film->title }}">
             </div>
             
             <div class="info">

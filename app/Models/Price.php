@@ -11,6 +11,7 @@ class Price extends Model
     protected $fillable = [
         'type',
         'amount',
+        'price',
         'created_by',
     ];
 }

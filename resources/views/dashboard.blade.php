@@ -97,17 +97,17 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
         </div>
 
         <div class="container">
+            @guest
+            <!-- Original Layout for Guests -->
             <div class="hero-card">
                 <div class="hero-left fade-up">
                     <h1 class="h1">Nikmati Pengalaman Menonton yang Lebih <span style="background:linear-gradient(90deg,var(--accent1),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Cinematic</span></h1>
                     <p class="lead">Film terbaru, studio berkualitas, dan pengalaman pemesanan cepat. Hover kartu film untuk lihat trailer, jam tayang, dan pesan tiket langsung.</p>
 
-                    @guest
                     <div style="margin-top:1.2rem;display:flex;gap:.75rem;flex-wrap:wrap">
                         <a href="{{ route('login') }}" class="btn-cta">Masuk</a>
                         <a href="{{ route('register') }}" class="ghost-cta">Daftar</a>
                     </div>
-                    @endguest
                 </div>
 
                 <div class="hero-right fade-up" aria-hidden="true">
@@ -116,6 +116,56 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                     </div>
                 </div>
             </div>
+            @else
+            <!-- Large Centered Carousel for Authenticated Users -->
+            <div class="hero-carousel fade-up" style="display:flex;justify-content:center;">
+                <div class="carousel-container" style="width:800px;height:450px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 30px 80px rgba(2,6,23,0.8);position:relative;">
+                    @php
+                        $posterMap = [
+                            'Avengers: Endgame' => 'images/avengers-endgame.jpg',
+                            'Spider-Man: No Way Home' => 'images/spiderman-nwh.jpg', 
+                            'The Batman' => 'images/the-batman.jpg',
+                            'Shawshank Redemption' => 'images/shawshank.jpg'
+                        ];
+                    @endphp
+                    @foreach($films as $index => $film)
+                    <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}" style="position:absolute;inset:0;opacity:{{ $index === 0 ? '1' : '0' }};transition:opacity 1.5s ease-in-out;cursor:pointer;" onclick="window.location.href='{{ route('films.schedules', $film->id) }}'">
+                        <img src="{{ asset($posterMap[$film->title] ?? 'images/placeholder.svg') }}" alt="{{ $film->title }}" style="width:100%;height:100%;object-fit:cover;">
+                        <div style="position:absolute;inset:0;background:linear-gradient(45deg,rgba(0,0,0,0.3),transparent 50%,rgba(0,0,0,0.6));">
+                            <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.9));padding:2rem;">
+                                <h2 style="color:white;margin:0 0 .5rem 0;font-size:2.5rem;font-weight:800;">{{ $film->title }}</h2>
+                                <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1rem;">
+                                    <span style="color:rgba(255,255,255,0.9);font-size:1rem;"><i class="fas fa-clock" style="margin-right:.5rem;"></i>{{ $film->duration }} menit</span>
+                                    @if($film->rating)
+                                    <span style="color:var(--accent3);font-weight:700;font-size:1rem;">★ {{ $film->rating }}/10</span>
+                                    @endif
+                                </div>
+                                @if($film->synopsis)
+                                <p style="color:rgba(255,255,255,0.8);margin:0 0 1rem 0;font-size:1rem;line-height:1.5;max-width:600px;">{{ Str::limit($film->synopsis, 150) }}</p>
+                                @endif
+                                <button class="btn-cta" style="font-size:1rem;padding:1rem 2rem;">Pesan Tiket Sekarang</button>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    
+                    <!-- Navigation arrows -->
+                    <button id="prev-slide" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);border:none;color:white;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:1.2rem;transition:all 0.3s;">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-slide" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);border:none;color:white;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:1.2rem;transition:all 0.3s;">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <!-- Carousel indicators -->
+                    <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;">
+                        @foreach($films as $index => $film)
+                        <div class="carousel-dot {{ $index === 0 ? 'active' : '' }}" data-slide="{{ $index }}" style="width:12px;height:12px;border-radius:50%;background:{{ $index === 0 ? 'white' : 'rgba(255,255,255,0.4)' }};cursor:pointer;transition:all 0.3s;border:2px solid rgba(255,255,255,0.2);"></div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            @endguest
         </div>
     </section>
 
@@ -126,9 +176,18 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 
             <div class="grid">
                 @forelse($films as $item)
-                <article class="movie-card fade-up" tabindex="0" onclick="window.location.href='{{ route('films.show', $item->id) }}'" style="cursor: pointer;">
+                <article class="movie-card fade-up" tabindex="0" onclick="window.location.href='{{ route('films.schedules', $item->id) }}'" style="cursor: pointer;">
                     <div class="poster-wrap">
-                        <img src="{{ asset('storage/' . $item->poster_image) }}" alt="Poster {{ $item->title }}">
+                        @php
+                            $posterMap = [
+                                'Avengers: Endgame' => 'images/avengers-endgame.jpg',
+                                'Spider-Man: No Way Home' => 'images/spiderman-nwh.jpg', 
+                                'The Batman' => 'images/the-batman.jpg',
+                                'Shawshank Redemption' => 'images/shawshank.jpg'
+                            ];
+                            $posterPath = $posterMap[$item->title] ?? 'images/placeholder.svg';
+                        @endphp
+                        <img src="{{ asset($posterPath) }}" alt="Poster {{ $item->title }}">
 
                         <div class="poster-overlay">
                             <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -293,6 +352,106 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 })();
 
 // Keyboard accessibility: close modal with Esc
-document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal = document.getElementById('trailer-modal'); if(modal && modal.style.display==='flex'){ modal.style.display='none'; document.getElementById('trailer-container').innerHTML=''; document.body.style.overflow=''; } } })
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal = document.getElementById('trailer-modal'); if(modal && modal.style.display==='flex'){ modal.style.display='none'; document.getElementById('trailer-container').innerHTML=''; document.body.style.overflow=''; } } });
+
+// Header toggle functionality
+(function(){
+    const toggleBtn = document.getElementById('toggle-header');
+    const headerContent = document.getElementById('header-content');
+    const headerIcon = document.getElementById('header-icon');
+    let isExpanded = true;
+    
+    if(!toggleBtn) return;
+    
+    toggleBtn.addEventListener('click', () => {
+        if(isExpanded) {
+            headerContent.style.maxHeight = '0';
+            headerIcon.style.transform = 'rotate(-90deg)';
+        } else {
+            headerContent.style.maxHeight = '200px';
+            headerIcon.style.transform = 'rotate(0deg)';
+        }
+        isExpanded = !isExpanded;
+    });
+})();
+
+// Hero Carousel functionality
+(function(){
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    let currentSlide = 0;
+    let autoAdvance;
+    
+    if(slides.length === 0) return;
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.style.opacity = '0');
+        dots.forEach(dot => {
+            dot.style.background = 'rgba(255,255,255,0.4)';
+            dot.classList.remove('active');
+        });
+        
+        slides[index].style.opacity = '1';
+        dots[index].style.background = 'white';
+        dots[index].classList.add('active');
+        
+        currentSlide = index;
+    }
+    
+    function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+    }
+    
+    function prevSlide() {
+        const prev = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prev);
+    }
+    
+    function startAutoAdvance() {
+        autoAdvance = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoAdvance() {
+        clearInterval(autoAdvance);
+    }
+    
+    // Event listeners
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            stopAutoAdvance();
+            setTimeout(startAutoAdvance, 3000);
+        });
+    });
+    
+    if(nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopAutoAdvance();
+            setTimeout(startAutoAdvance, 3000);
+        });
+    }
+    
+    if(prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoAdvance();
+            setTimeout(startAutoAdvance, 3000);
+        });
+    }
+    
+    // Hover to pause
+    const carousel = document.querySelector('.carousel-container');
+    if(carousel) {
+        carousel.addEventListener('mouseenter', stopAutoAdvance);
+        carousel.addEventListener('mouseleave', startAutoAdvance);
+    }
+    
+    // Start auto-advance
+    startAutoAdvance();
+})();
 </script>
 @endpush

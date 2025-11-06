@@ -8,6 +8,7 @@ use Midtrans\Snap;
 use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -21,6 +22,13 @@ class PaymentController extends Controller
 
     public function createPayment(Request $request)
     {
+        $request->validate([
+            'total_amount' => 'required|numeric',
+            'price_per_seat' => 'required|numeric',
+            'seat_ids' => 'required|array',
+            'film_title' => 'required|string'
+        ]);
+        
         try {
             $orderId = 'ORDER-' . time() . '-' . Auth::id();
             
@@ -51,9 +59,13 @@ class PaymentController extends Controller
                 'order_id' => $orderId
             ]);
         } catch (\Exception $e) {
+            \Log::error('Payment creation error: ' . $e->getMessage());
+            \Log::error('Request data: ' . json_encode($request->all()));
             return response()->json([
                 'error' => true,
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+                'file' => $e->getFile()
             ], 500);
         }
     }
@@ -73,6 +85,15 @@ class PaymentController extends Controller
                     
                     // Update order status
                     $order->update(['status' => 'confirmed']);
+                    
+                    // Update seat status to booked
+                    $orderDetails = \App\Models\OrderDetail::where('order_id', $order->id)->get();
+                    foreach ($orderDetails as $detail) {
+                        DB::table('seats')->where('id', $detail->seat_id)->update([
+                            'status' => 'booked',
+                            'expired_at' => null
+                        ]);
+                    }
                 }
             }
         }

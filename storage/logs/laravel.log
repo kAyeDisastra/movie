@@ -2611,3 +2611,36 @@ Stack trace:
 [2025-11-06 13:16:16] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
 [2025-11-06 13:16:20] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
 [2025-11-06 13:16:22] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:23:21] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:23:33] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:23:34] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:23:39] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:23:49] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:23:52] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:29] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:32] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:39] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:41] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:45] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:47] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:53] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:54] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:24:56] local.INFO: Panel access check {"panel_id":"admin","user_role":"admin","user_email":"admin@example.com"} 
+[2025-11-06 13:39:25] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 13:39:25] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[42],"film_title":"Shawshank Redemption"}  
+[2025-11-06 13:39:42] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 13:39:42] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[54],"film_title":"Shawshank Redemption"}  
+[2025-11-06 13:41:38] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 13:41:38] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[43],"film_title":"Shawshank Redemption"}  
+[2025-11-06 13:43:38] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 13:43:38] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[44],"film_title":"Shawshank Redemption"}  
+[2025-11-06 13:53:28] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 13:53:28] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[64],"film_title":"Shawshank Redemption"}  
+[2025-11-06 13:53:49] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 13:53:49] local.ERROR: Request data: {"total_amount":50000,"price_per_seat":"50000.00","seat_ids":[7],"film_title":"The Batman"}  
+[2025-11-06 13:58:31] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 13:58:31] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[65],"film_title":"Shawshank Redemption"}  
+[2025-11-06 14:18:52] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 14:18:52] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[63],"film_title":"Shawshank Redemption"}  
+[2025-11-06 14:28:52] local.ERROR: Payment creation error: Midtrans API is returning API error. HTTP status code: 401 API response: {"error_messages":["Access denied due to unauthorized transaction, please check client or server key","Visit https://docs.midtrans.com/reference/backend-integration for more details"]}  
+[2025-11-06 14:28:52] local.ERROR: Request data: {"total_amount":75000,"price_per_seat":"75000.00","seat_ids":[62],"film_title":"Shawshank Redemption"}  

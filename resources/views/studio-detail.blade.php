@@ -31,12 +31,12 @@
                                             <button class="btn btn-secondary btn-sm w-100" disabled>
                                                 {{ $seat->seat_code }}
                                             </button>
-                                        @elseif(in_array($seat->id, $reservedSeatIds))
-                                            <button class="btn btn-warning btn-sm w-100" disabled>
+                                        @elseif(in_array($seat->id, $pendingSeatIds))
+                                            <button class="btn btn-warning btn-sm w-100" disabled title="Menunggu pembayaran">
                                                 {{ $seat->seat_code }}
                                             </button>
                                         @else
-                                            <button class="btn btn-outline-success btn-sm w-100 seat-btn" data-seat-id="{{ $seat->id }}" data-seat-code="{{ $seat->seat_code }}">
+                                            <button class="btn btn-outline-success btn-sm w-100 seat-btn" data-seat-id="{{ $seat->id }}" data-seat-code="{{ $seat->seat_code }}" data-status="available">
                                                 {{ $seat->seat_code }}
                                             </button>
                                         @endif
@@ -51,8 +51,9 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <span id="selected-count">0</span> kursi dipilih
+                                    <div id="total-price" class="text-success fw-bold"></div>
                                 </div>
-                                <button id="book-btn" class="btn btn-primary" disabled onclick="bookSeats()">Book Kursi</button>
+                                <button id="book-btn" class="btn btn-primary" disabled onclick="showBookingModal()">Book Kursi</button>
                             </div>
                         </div>
                     </div>
@@ -68,7 +69,7 @@
                             <p><strong>Kapasitas:</strong> {{ $studio->capacity }} kursi</p>
                             <p><strong>Tanggal:</strong> {{ $schedule->show_date }}</p>
                             <p><strong>Jam:</strong> {{ $schedule->show_time }}</p>
-                            <p><strong>Harga:</strong> Rp {{ number_format($schedule->price->amount, 0, ',', '.') }}</p>
+                            <p><strong>Harga:</strong> Rp {{ number_format($schedule->price->amount ?? 0, 0, ',', '.') }}</p>
                             <div class="mt-3">
                                 <div class="d-flex align-items-center mb-2">
                                     <div class="btn btn-outline-success btn-sm me-2" style="width: 30px; height: 30px;"></div>
@@ -80,7 +81,7 @@
                                 </div>
                                 <div class="d-flex align-items-center mb-2">
                                     <div class="btn btn-warning btn-sm me-2" style="width: 30px; height: 30px;"></div>
-                                    <small>Dipesan (1 jam)</small>
+                                    <small>Menunggu Pembayaran</small>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="btn btn-secondary btn-sm me-2" style="width: 30px; height: 30px;"></div>
@@ -93,6 +94,45 @@
             </div>
         </div>
     </main>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Konfirmasi Pemesanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <strong>Film:</strong> {{ $schedule->film->title ?? '-' }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Studio:</strong> {{ $studio->name }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Tanggal & Waktu:</strong> {{ $schedule->show_date }} - {{ $schedule->show_time }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Kursi:</strong> <span id="modal-seats"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Jumlah Kursi:</strong> <span id="modal-seat-count"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Harga per Kursi:</strong> Rp {{ number_format($schedule->price->amount ?? 0, 0, ',', '.') }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Total Harga:</strong> <span id="modal-total-price" class="text-success fw-bold"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" onclick="proceedToPayment()">Bayar Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('js')
@@ -104,7 +144,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     seatButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            if (!this.disabled) {
+            // Only allow selection of available seats
+            if (!this.disabled && this.dataset.status === 'available') {
                 const seatId = parseInt(this.dataset.seatId);
                 const seatCode = this.dataset.seatCode;
                 
@@ -122,11 +163,54 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Add click handler for all seats (including disabled ones) to show feedback
+    document.querySelectorAll('.btn-warning, .btn-secondary').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (this.classList.contains('btn-warning')) {
+                alert('Kursi ini sedang dipesan oleh orang lain. Silakan pilih kursi lain.');
+            } else if (this.classList.contains('btn-secondary')) {
+                alert('Kursi ini sudah terisi. Silakan pilih kursi lain.');
+            }
+        });
+    });
 });
 
 function updateBookingInfo() {
-    document.getElementById('selected-count').textContent = selectedSeats.length;
-    document.getElementById('book-btn').disabled = selectedSeats.length === 0;
+    const count = selectedSeats.length;
+    const pricePerSeat = {{ $schedule->price->amount ?? 0 }};
+    const totalPrice = count * pricePerSeat;
+    
+    document.getElementById('selected-count').textContent = count;
+    document.getElementById('book-btn').disabled = count === 0;
+    
+    if (count > 0) {
+        document.getElementById('total-price').textContent = 'Total: Rp ' + totalPrice.toLocaleString('id-ID');
+    } else {
+        document.getElementById('total-price').textContent = '';
+    }
+}
+
+function showBookingModal() {
+    if (selectedSeats.length === 0) return;
+    
+    const seatCodes = selectedSeats.map(seat => seat.code).join(', ');
+    const count = selectedSeats.length;
+    const pricePerSeat = {{ $schedule->price->amount ?? 0 }};
+    const totalPrice = count * pricePerSeat;
+    
+    document.getElementById('modal-seats').textContent = seatCodes;
+    document.getElementById('modal-seat-count').textContent = count;
+    document.getElementById('modal-total-price').textContent = 'Rp ' + totalPrice.toLocaleString('id-ID');
+    
+    new bootstrap.Modal(document.getElementById('bookingModal')).show();
+}
+
+function proceedToPayment() {
+    // Close modal
+    bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
+    // Proceed with booking
+    bookSeats();
 }
 
 function bookSeats() {
