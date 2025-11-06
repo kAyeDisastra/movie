@@ -1,0 +1,732 @@
+[2025-10-30 04:03:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:03:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:04:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:04:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:04:44] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#22 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#23 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1220): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#24 C:\\Users\\ThinkPad\\movie-ticket-laravel\\public\\index.php(20): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#25 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\ThinkP...')
+#26 {main}
+"} 
+[2025-10-30 04:05:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:05:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:06:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:06:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:07:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:07:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:08:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:08:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:09:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:09:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:10:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:10:00] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:11:01] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:11:01] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:11:01] local.ERROR: Object of class Closure could not be converted to string {"exception":"[object] (Error(code: 0): Object of class Closure could not be converted to string at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php:125)
+[stacktrace]
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(297): Illuminate\\Routing\\RouteRegistrar->attribute('middleware', Array)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(26): Illuminate\\Routing\\RouteRegistrar->__call('middleware', Array)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(524): Illuminate\\Support\\ServiceProvider->{closure}(Object(Illuminate\\Routing\\Router))
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(480): Illuminate\\Routing\\Router->loadRoutes(Object(Closure))
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(210): Illuminate\\Routing\\Router->group(Array, Object(Closure))
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\filament\\filament\\routes\\web.php(14): Illuminate\\Routing\\RouteRegistrar->group(Object(Closure))
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(194): require('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\Concerns\\PackageServiceProvider\\ProcessRoutes.php(14): Illuminate\\Support\\ServiceProvider->loadRoutesFrom('C:\\\\Users\\\\ThinkP...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\spatie\\laravel-package-tools\\src\\PackageServiceProvider.php(85): Spatie\\LaravelPackageTools\\PackageServiceProvider->bootPackageRoutes()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Spatie\\LaravelPackageTools\\PackageServiceProvider->boot()
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1151): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1132): Illuminate\\Foundation\\Application->bootProvider(Object(Filament\\FilamentServiceProvider))
+#16 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Filament\\FilamentServiceProvider), 'Filament\\\\Filame...')
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): array_walk(Array, Object(Closure))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#19 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#20 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#21 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#22 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2025-10-30 04:15:48] local.INFO: Panel access check {"panel_id":"admin","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:07] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:09] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:09] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:12] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:12] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:17] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:17] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:22] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:22] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:27] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:27] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:37] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:37] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:42] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:42] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:52] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:52] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:18:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:03] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:03] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:08] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:08] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:12] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:13] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:18] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:18] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:23] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:23] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:28] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:19:28] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:32:50] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:32:50] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:32:50] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:32:52] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:32:52] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:32:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:32:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:02] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:02] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:07] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:07] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:13] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:13] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:17] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:17] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:22] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:22] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:27] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:27] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:37] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:38] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:53] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:53] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:33:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:02] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:03] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:08] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:08] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:13] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:13] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:17] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:18] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:23] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:23] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:27] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:28] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:33] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:37] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:38] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:47] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:53] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:53] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:34:58] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:03] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:03] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:07] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:08] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:12] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:13] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:17] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:18] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:22] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:23] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:27] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:28] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:33] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:37] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:38] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:53] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:53] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:57] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:35:57] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:36:34] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:36:48] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:38:40] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:41:40] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-30 04:41:41] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:13:30] local.ERROR: During class fetch: Uncaught ErrorException: include(): Read of 6230 bytes failed with errno=22 Invalid argument in C:\Users\ThinkPad\movie-ticket-laravel\vendor\composer\ClassLoader.php:576
+Stack trace:
+#0 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php(258): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'include(): Read...', 'C:\\Users\\ThinkP...', 576)
+#1 C:\Users\ThinkPad\movie-ticket-laravel\vendor\composer\ClassLoader.php(576): Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(8, 'include(): Read...', 'C:\\Users\\ThinkP...', 576)
+#2 C:\Users\ThinkPad\movie-ticket-laravel\vendor\composer\ClassLoader.php(576): include('C:\\Users\\ThinkP...')
+#3 C:\Users\ThinkPad\movie-ticket-laravel\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\Users\\ThinkP...')
+#4 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php(38): Composer\Autoload\ClassLoader->loadClass('Illuminate\\Data...')
+#5 C:\Users\ThinkPad\movie-ticket-laravel\vendor\composer\ClassLoader.php(576): include('C:\\Users\\ThinkP...')
+#6 C:\Users\ThinkPad\movie-ticket-laravel\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('C:\\Users\\ThinkP...')
+#7 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Database\DatabaseServiceProvider.php(43): Composer\Autoload\ClassLoader->loadClass('Illuminate\\Data...')
+#8 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(896): Illuminate\Database\DatabaseServiceProvider->register()
+#9 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php(74): Illuminate\Foundation\Application->register(Object(Illuminate\Database\DatabaseServiceProvider))
+#10 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(871): Illuminate\Foundation\ProviderRepository->load(Array)
+#11 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\RegisterProviders.php(37): Illuminate\Foundation\Application->registerConfiguredProviders()
+#12 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(342): Illuminate\Foundation\Bootstrap\RegisterProviders->bootstrap(Object(Illuminate\Foundation\Application))
+#13 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(186): Illuminate\Foundation\Application->bootstrapWith(Array)
+#14 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(170): Illuminate\Foundation\Http\Kernel->bootstrap()
+#15 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(144): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#16 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\Application.php(1220): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#17 C:\Users\ThinkPad\movie-ticket-laravel\public\index.php(20): Illuminate\Foundation\Application->handleRequest(Object(Illuminate\Http\Request))
+#18 C:\Users\ThinkPad\movie-ticket-laravel\vendor\laravel\framework\src\Illuminate\Foundation\resources\server.php(23): require_once('C:\\Users\\ThinkP...')
+#19 {main} {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): During class fetch: Uncaught ErrorException: include(): Read of 6230 bytes failed with errno=22 Invalid argument in C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\composer\\ClassLoader.php:576
+Stack trace:
+#0 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(258): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'include(): Read...', 'C:\\\\Users\\\\ThinkP...', 576)
+#1 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\composer\\ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(8, 'include(): Read...', 'C:\\\\Users\\\\ThinkP...', 576)
+#2 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\composer\\ClassLoader.php(576): include('C:\\\\Users\\\\ThinkP...')
+#3 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\Users\\\\ThinkP...')
+#4 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php(38): Composer\\Autoload\\ClassLoader->loadClass('Illuminate\\\\Data...')
+#5 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\composer\\ClassLoader.php(576): include('C:\\\\Users\\\\ThinkP...')
+#6 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('C:\\\\Users\\\\ThinkP...')
+#7 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\DatabaseServiceProvider.php(43): Composer\\Autoload\\ClassLoader->loadClass('Illuminate\\\\Data...')
+#8 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(896): Illuminate\\Database\\DatabaseServiceProvider->register()
+#9 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(74): Illuminate\\Foundation\\Application->register(Object(Illuminate\\Database\\DatabaseServiceProvider))
+#10 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(871): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#11 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(37): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#12 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(342): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#13 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(186): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#14 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(170): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#15 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#16 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1220): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#17 C:\\Users\\ThinkPad\\movie-ticket-laravel\\public\\index.php(20): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#18 C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\ThinkP...')
+#19 {main} at C:\\Users\\ThinkPad\\movie-ticket-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php:38)
+[stacktrace]
+#0 {main}
+"} 
+[2025-10-31 03:14:21] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:21] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:32] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:33] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:33] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:38] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:38] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:43] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:49] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:49] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:54] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:54] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:59] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:14:59] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:15:04] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:15:04] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:15:09] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:15:09] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:15:14] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:15:14] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 
+[2025-10-31 03:15:19] local.INFO: Panel access check {"panel_id":"owner","user_role":"owner","user_email":"owner@example.com"} 

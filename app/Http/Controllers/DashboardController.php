@@ -21,7 +21,15 @@ class DashboardController extends Controller
 
     public function show($id)
     {
-        $film = Film::findOrFail($id);
+        $film = Film::with(['schedules.studio', 'schedules.price'])
+            ->findOrFail($id);
         return view('film-detail', compact('film'));
+    }
+
+    public function schedules($id)
+    {
+        $film = Film::with(['schedules.studio', 'schedules.price'])
+            ->findOrFail($id);
+        return view('schedules', compact('film'));
     }
 }

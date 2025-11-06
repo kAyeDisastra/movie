@@ -27,6 +27,7 @@ class OwnerPanelProvider extends PanelProvider
             ->id('owner')
             ->path('owner')
             ->login()
+            ->authGuard('web')
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -37,8 +38,9 @@ class OwnerPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Owner/Widgets'), for: 'App\Filament\Owner\Widgets')
             ->widgets([
+                \App\Filament\Owner\Widgets\StatsOverview::class,
+                \App\Filament\Owner\Widgets\FilmsChart::class,
                 AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

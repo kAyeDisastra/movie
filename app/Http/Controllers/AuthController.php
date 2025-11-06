@@ -42,6 +42,10 @@ class AuthController extends Controller
             return redirect('/admin');
         }
         
+        if ($user->role == 'owner') {
+            return redirect('/owner');
+        }
+        
         return redirect()->route('dashboard');
     }
 

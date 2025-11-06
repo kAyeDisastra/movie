@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/films/{id}', [\App\Http\Controllers\DashboardController::class, 'show'])->name('films.show');
+Route::get('/films/{id}/schedules', [\App\Http\Controllers\DashboardController::class, 'schedules'])->name('films.schedules');
 
 Route::controller(\App\Http\Controllers\AuthController::class)->group(function () {
     Route::get('/login', 'indexLogin')->name('login');
