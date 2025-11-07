@@ -106,13 +106,39 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 
                     <div style="margin-top:1.2rem;display:flex;gap:.75rem;flex-wrap:wrap">
                         <a href="{{ route('login') }}" class="btn-cta">Masuk</a>
-                        <a href="{{ route('register') }}" class="ghost-cta">Daftar</a>
+                        <a href="{{ route('register') }}" class="btn-cta" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);">Daftar</a>
                     </div>
                 </div>
 
                 <div class="hero-right fade-up" aria-hidden="true">
-                    <div style="width:360px;height:220px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 50px rgba(2,6,23,0.6);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center">
-                        <i class="fas fa-film" style="font-size:4.5rem;opacity:.18;color:#fff;"></i>
+                    <div id="hero-slideshow" style="width:450px;height:300px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 60px rgba(2,6,23,0.8);position:relative;">
+                        <div class="hero-slide active" style="position:absolute;inset:0;opacity:1;transition:opacity 1.5s ease;">
+                            <img src="https://images.unsplash.com/photo-1489599904472-84978f312f2e?w=500&h=300&fit=crop" alt="Cinema Experience" style="width:100%;height:100%;object-fit:cover;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(45deg,rgba(108,99,255,0.4),transparent 60%,rgba(0,224,255,0.3));">
+                                <div style="position:absolute;bottom:25px;left:25px;right:25px;">
+                                    <h3 style="color:white;margin:0 0 10px 0;font-size:20px;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,0.6);">Studio Premium</h3>
+                                    <p style="color:rgba(255,255,255,0.95);margin:0;font-size:14px;text-shadow:0 1px 6px rgba(0,0,0,0.5);">Teknologi audio visual terdepan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease;">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=300&fit=crop" alt="Cinema Snacks" style="width:100%;height:100%;object-fit:cover;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(45deg,rgba(255,107,107,0.4),transparent 60%,rgba(108,99,255,0.3));">
+                                <div style="position:absolute;bottom:25px;left:25px;right:25px;">
+                                    <h3 style="color:white;margin:0 0 10px 0;font-size:20px;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,0.6);">Snack & Minuman</h3>
+                                    <p style="color:rgba(255,255,255,0.95);margin:0;font-size:14px;text-shadow:0 1px 6px rgba(0,0,0,0.5);">Nikmati camilan favorit Anda</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-slide" style="position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease;">
+                            <img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500&h=300&fit=crop" alt="Easy Booking" style="width:100%;height:100%;object-fit:cover;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(45deg,rgba(0,224,255,0.4),transparent 60%,rgba(255,107,107,0.3));">
+                                <div style="position:absolute;bottom:25px;left:25px;right:25px;">
+                                    <h3 style="color:white;margin:0 0 10px 0;font-size:20px;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,0.6);">Booking Mudah</h3>
+                                    <p style="color:rgba(255,255,255,0.95);margin:0;font-size:14px;text-shadow:0 1px 6px rgba(0,0,0,0.5);">Pesan tiket dalam hitungan detik</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -120,17 +146,9 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
             <!-- Large Centered Carousel for Authenticated Users -->
             <div class="hero-carousel fade-up" style="display:flex;justify-content:center;">
                 <div class="carousel-container" style="width:800px;height:450px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 30px 80px rgba(2,6,23,0.8);position:relative;">
-                    @php
-                        $posterMap = [
-                            'Avengers: Endgame' => 'images/avengers-endgame.jpg',
-                            'Spider-Man: No Way Home' => 'images/spiderman-nwh.jpg', 
-                            'The Batman' => 'images/the-batman.jpg',
-                            'Shawshank Redemption' => 'images/shawshank.jpg'
-                        ];
-                    @endphp
                     @foreach($films as $index => $film)
                     <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}" style="position:absolute;inset:0;opacity:{{ $index === 0 ? '1' : '0' }};transition:opacity 1.5s ease-in-out;cursor:pointer;" onclick="window.location.href='{{ route('films.schedules', $film->id) }}'">
-                        <img src="{{ asset($posterMap[$film->title] ?? 'images/placeholder.svg') }}" alt="{{ $film->title }}" style="width:100%;height:100%;object-fit:cover;">
+                        <img src="{{ $film->poster_image ? asset('storage/uploads/' . $film->poster_image) : 'https://picsum.photos/800/450?random=' . $film->id }}" alt="{{ $film->title }}" style="width:100%;height:100%;object-fit:cover;">
                         <div style="position:absolute;inset:0;background:linear-gradient(45deg,rgba(0,0,0,0.3),transparent 50%,rgba(0,0,0,0.6));">
                             <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.9));padding:2rem;">
                                 <h2 style="color:white;margin:0 0 .5rem 0;font-size:2.5rem;font-weight:800;">{{ $film->title }}</h2>
@@ -178,20 +196,11 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                 @forelse($films as $item)
                 <article class="movie-card fade-up" tabindex="0" onclick="window.location.href='{{ route('films.schedules', $item->id) }}'" style="cursor: pointer;">
                     <div class="poster-wrap">
-                        @php
-                            $posterMap = [
-                                'Avengers: Endgame' => 'images/avengers-endgame.jpg',
-                                'Spider-Man: No Way Home' => 'images/spiderman-nwh.jpg', 
-                                'The Batman' => 'images/the-batman.jpg',
-                                'Shawshank Redemption' => 'images/shawshank.jpg'
-                            ];
-                            $posterPath = $posterMap[$item->title] ?? 'images/placeholder.svg';
-                        @endphp
-                        <img src="{{ asset($posterPath) }}" alt="Poster {{ $item->title }}">
+                        <img src="{{ $item->poster_image ? asset('storage/uploads/' . $item->poster_image) : 'https://picsum.photos/300/450?random=' . $item->id }}" alt="Poster {{ $item->title }}">
 
                         <div class="poster-overlay">
                             <div style="display:flex;justify-content:space-between;align-items:center;">
-                                <button class="play-btn" data-trailer="{{ $item->trailer_url ?? '' }}" aria-label="Putar trailer {{ $item->title }}" onclick="event.stopPropagation()">
+                                <button class="play-btn" data-trailer="{{ $item->trailer_url }}" aria-label="Putar trailer {{ $item->title }}" onclick="event.stopPropagation()">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3v18l15-9L5 3z" fill="#001018"/></svg>
                                     Trailer
                                 </button>
@@ -260,8 +269,8 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
     </main>
 
     <!-- Trailer Modal (hidden) -->
-    <div id="trailer-modal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:9999;padding:2rem;background:rgba(0,0,0,0.6)">
-        <div style="width:min(1100px,95%);max-height:80vh;background:#000;border-radius:12px;overflow:hidden;position:relative;">
+    <div id="trailer-modal" style="position:fixed;top:0;left:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;z-index:9999;padding:2rem;background:rgba(0,0,0,0.8);">
+        <div style="width:min(1100px,95%);max-height:80vh;background:#000;border-radius:12px;overflow:hidden;position:relative;margin:auto;">
             <button id="modal-close" style="position:absolute;right:12px;top:8px;z-index:5;background:transparent;border:none;color:#fff;font-size:1.25rem;padding:.6rem">✕</button>
             <div id="trailer-container" style="width:100%;height:0;padding-bottom:56.25%;position:relative;"></div>
         </div>
@@ -317,7 +326,8 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
         btn.addEventListener('click', function(e){
             e.preventDefault();
             const src = btn.getAttribute('data-trailer') || '';
-            if(!src){
+            console.log('Trailer URL:', src);
+            if(!src || src.trim() === ''){
                 // if no trailer url, just show a small toast-like message
                 const t = document.createElement('div');
                 t.textContent = 'Trailer belum tersedia';
@@ -373,6 +383,47 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
         }
         isExpanded = !isExpanded;
     });
+})();
+
+// Hero Slideshow functionality
+(function(){
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    let autoAdvance;
+    
+    if(slides.length === 0) return;
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.style.opacity = '0');
+        slides[index].style.opacity = '1';
+        currentSlide = index;
+    }
+    
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+            showSlide(currentSlide + 1);
+        } else {
+            stopAutoAdvance();
+        }
+    }
+    
+    function startAutoAdvance() {
+        autoAdvance = setInterval(nextSlide, 3000);
+    }
+    
+    function stopAutoAdvance() {
+        clearInterval(autoAdvance);
+    }
+    
+    // Hover to pause
+    const slideshow = document.getElementById('hero-slideshow');
+    if(slideshow) {
+        slideshow.addEventListener('mouseenter', stopAutoAdvance);
+        slideshow.addEventListener('mouseleave', startAutoAdvance);
+    }
+    
+    // Start auto-advance
+    startAutoAdvance();
 })();
 
 // Hero Carousel functionality

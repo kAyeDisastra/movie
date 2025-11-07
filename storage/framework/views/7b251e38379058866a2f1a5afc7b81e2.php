@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 2px 20px rgba(0,0,0,0.1);">
+<nav class="navbar navbar-expand-lg fixed-top" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 2px 20px rgba(0,0,0,0.1);">
     <div class="container">
         <a class="navbar-brand fw-bold text-white" href="<?php echo e(route('dashboard')); ?>">
             <i class="fas fa-film me-2"></i><?php echo e(config('app.name')); ?>
@@ -68,5 +68,4 @@
             </ul>
         </div>
     </div>
-</nav>
-<?php /**PATH C:\Users\ThinkPad\movie-ticket-laravel\resources\views/components/navbar.blade.php ENDPATH**/ ?>
+</nav><?php /**PATH C:\Users\ThinkPad\movie-ticket-laravel\resources\views/components/navbar.blade.php ENDPATH**/ ?>

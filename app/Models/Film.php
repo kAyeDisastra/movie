@@ -13,6 +13,7 @@ class Film extends Model
         'description',
         'status',
         'poster_image',
+        'trailer_url',
         'created_by'
     ];
 

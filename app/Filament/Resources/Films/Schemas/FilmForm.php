@@ -32,7 +32,14 @@ class FilmForm
                     ->required(),
                 Textarea::make('description')
                     ->columnSpanFull(),
+                TextInput::make('trailer_url')
+                    ->label('Trailer URL')
+                    ->url()
+                    ->placeholder('https://www.youtube.com/watch?v=...')
+                    ->columnSpanFull(),
                 FileUpload::make('poster_image')
+                    ->disk('public')
+                    ->directory('uploads')
                     ->columnSpanFull()
                     ->image(),
                 Hidden::make('created_by')

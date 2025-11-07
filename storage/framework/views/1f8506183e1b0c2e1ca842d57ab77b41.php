@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title', 'Login'); ?>
 
 <?php $__env->startPush('css'); ?>
@@ -178,5 +179,4 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->startPush('js'); ?>
 
 <?php $__env->stopPush(); ?>
-
 <?php echo $__env->make('layouts.auth', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\ThinkPad\movie-ticket-laravel\resources\views/auth/login.blade.php ENDPATH**/ ?>
