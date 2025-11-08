@@ -21,6 +21,7 @@ class FilmForm
                     ->required(),
                 TagsInput::make('genre')
                     ->placeholder('')
+//                    ->separator(',')
                     ->required(),
                 TextInput::make('duration')
                     ->label('Duration (Minutes)')

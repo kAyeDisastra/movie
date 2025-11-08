@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
             PriceSeeder::class,
             ScheduleSeeder::class,
             SeatSeeder::class,
-            OrderSeeder::class,
-            PaymentSeeder::class,
-            InvoiceSeeder::class,
-            ReportSeeder::class,
+//            OrderSeeder::class,
+//            PaymentSeeder::class,
+//            InvoiceSeeder::class,
+//            ReportSeeder::class,
         ]);
     }
 }

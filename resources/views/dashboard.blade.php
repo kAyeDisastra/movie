@@ -166,7 +166,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                         </div>
                     </div>
                     @endforeach
-                    
+
                     <!-- Navigation arrows -->
                     <button id="prev-slide" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);border:none;color:white;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:1.2rem;transition:all 0.3s;">
                         <i class="fas fa-chevron-left"></i>
@@ -174,7 +174,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                     <button id="next-slide" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);border:none;color:white;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:1.2rem;transition:all 0.3s;">
                         <i class="fas fa-chevron-right"></i>
                     </button>
-                    
+
                     <!-- Carousel indicators -->
                     <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;">
                         @foreach($films as $index => $film)
@@ -196,8 +196,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                 @forelse($films as $item)
                 <article class="movie-card fade-up" tabindex="0" onclick="window.location.href='{{ route('films.schedules', $item->id) }}'" style="cursor: pointer;">
                     <div class="poster-wrap">
-                        <img src="{{ $item->poster_image ? asset('storage/uploads/' . $item->poster_image) : 'https://picsum.photos/300/450?random=' . $item->id }}" alt="Poster {{ $item->title }}">
-
+                        <img src="{{ $item->poster_image ? Storage::url($item->poster_image) : 'https://picsum.photos/300/450?random=' . $item->id }}" alt="Poster {{ $item->title }}">
                         <div class="poster-overlay">
                             <div style="display:flex;justify-content:space-between;align-items:center;">
                                 <button class="play-btn" data-trailer="{{ $item->trailer_url }}" aria-label="Putar trailer {{ $item->title }}" onclick="event.stopPropagation()">
@@ -217,7 +216,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 
                     <div class="meta">
                         <h3 class="title">{{ $item->title }}</h3>
-                        
+
                         @if($item->rating)
                         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
                             <span style="color:var(--accent3);font-weight:700">★ {{ $item->rating }}/10</span>
@@ -370,9 +369,9 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
     const headerContent = document.getElementById('header-content');
     const headerIcon = document.getElementById('header-icon');
     let isExpanded = true;
-    
+
     if(!toggleBtn) return;
-    
+
     toggleBtn.addEventListener('click', () => {
         if(isExpanded) {
             headerContent.style.maxHeight = '0';
@@ -390,15 +389,15 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
     const slides = document.querySelectorAll('.hero-slide');
     let currentSlide = 0;
     let autoAdvance;
-    
+
     if(slides.length === 0) return;
-    
+
     function showSlide(index) {
         slides.forEach(slide => slide.style.opacity = '0');
         slides[index].style.opacity = '1';
         currentSlide = index;
     }
-    
+
     function nextSlide() {
         if (currentSlide < slides.length - 1) {
             showSlide(currentSlide + 1);
@@ -406,22 +405,22 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
             stopAutoAdvance();
         }
     }
-    
+
     function startAutoAdvance() {
         autoAdvance = setInterval(nextSlide, 3000);
     }
-    
+
     function stopAutoAdvance() {
         clearInterval(autoAdvance);
     }
-    
+
     // Hover to pause
     const slideshow = document.getElementById('hero-slideshow');
     if(slideshow) {
         slideshow.addEventListener('mouseenter', stopAutoAdvance);
         slideshow.addEventListener('mouseleave', startAutoAdvance);
     }
-    
+
     // Start auto-advance
     startAutoAdvance();
 })();
@@ -434,41 +433,41 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
     const nextBtn = document.getElementById('next-slide');
     let currentSlide = 0;
     let autoAdvance;
-    
+
     if(slides.length === 0) return;
-    
+
     function showSlide(index) {
         slides.forEach(slide => slide.style.opacity = '0');
         dots.forEach(dot => {
             dot.style.background = 'rgba(255,255,255,0.4)';
             dot.classList.remove('active');
         });
-        
+
         slides[index].style.opacity = '1';
         dots[index].style.background = 'white';
         dots[index].classList.add('active');
-        
+
         currentSlide = index;
     }
-    
+
     function nextSlide() {
         const next = (currentSlide + 1) % slides.length;
         showSlide(next);
     }
-    
+
     function prevSlide() {
         const prev = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(prev);
     }
-    
+
     function startAutoAdvance() {
         autoAdvance = setInterval(nextSlide, 5000);
     }
-    
+
     function stopAutoAdvance() {
         clearInterval(autoAdvance);
     }
-    
+
     // Event listeners
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
@@ -477,7 +476,7 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
             setTimeout(startAutoAdvance, 3000);
         });
     });
-    
+
     if(nextBtn) {
         nextBtn.addEventListener('click', () => {
             nextSlide();
@@ -485,7 +484,7 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
             setTimeout(startAutoAdvance, 3000);
         });
     }
-    
+
     if(prevBtn) {
         prevBtn.addEventListener('click', () => {
             prevSlide();
@@ -493,14 +492,14 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
             setTimeout(startAutoAdvance, 3000);
         });
     }
-    
+
     // Hover to pause
     const carousel = document.querySelector('.carousel-container');
     if(carousel) {
         carousel.addEventListener('mouseenter', stopAutoAdvance);
         carousel.addEventListener('mouseleave', startAutoAdvance);
     }
-    
+
     // Start auto-advance
     startAutoAdvance();
 })();

@@ -11,36 +11,37 @@ class Order extends Model
         'schedule_id',
         'order_time',
         'status',
-        'cashier_id'
+        'cashier_id',
+        'total_price'
     ];
-    
+
     public $timestamps = false;
-    
+
     protected $casts = [
         'created_at' => 'datetime',
         'order_time' => 'datetime'
     ];
-    
+
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
     }
-    
+
     public function payment()
     {
         return $this->hasOne(Payment::class);
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function schedule()
     {
         return $this->belongsTo(Schedule::class);
     }
-    
+
     public function cashier()
     {
         return $this->belongsTo(User::class, 'cashier_id');

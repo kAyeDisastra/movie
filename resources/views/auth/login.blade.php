@@ -106,13 +106,13 @@
                 @endif
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">No Handphone</label>
+                    <label for="email" class="form-label">Email</label>
                     <input type="text"
                            class="form-control @error('email') is-invalid @enderror"
                            id="email"
                            name="email"
                            value="{{ old('email') }}"
-                           placeholder="Masukkan no handphone"
+                           placeholder="Masukkan email"
                            required autofocus>
                     @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>

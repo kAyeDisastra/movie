@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Booking;
+use App\Models\Order;
 use Carbon\Carbon;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
@@ -16,22 +17,22 @@ class RevenueStatsWidget extends BaseWidget
         $lastMonth = Carbon::now()->subMonth()->startOfMonth();
         $lastMonthEnd = Carbon::now()->subMonth()->endOfMonth();
 
-        $dailyRevenue = Booking::where('status', 'confirmed')
+        $dailyRevenue = Order::where('status', 'confirmed')
             ->whereDate('created_at', $today)
             ->sum('total_price');
 
-        $monthlyRevenue = Booking::where('status', 'confirmed')
+        $monthlyRevenue = Order::where('status', 'confirmed')
             ->where('created_at', '>=', $thisMonth)
             ->sum('total_price');
 
-        $lastMonthRevenue = Booking::where('status', 'confirmed')
+        $lastMonthRevenue = Order::where('status', 'confirmed')
             ->whereBetween('created_at', [$lastMonth, $lastMonthEnd])
             ->sum('total_price');
 
-        $totalTickets = Booking::where('status', 'confirmed')->count();
+        $totalTickets = Order::where('status', 'confirmed')->count();
 
-        $monthlyGrowth = $lastMonthRevenue > 0 
-            ? (($monthlyRevenue - $lastMonthRevenue) / $lastMonthRevenue) * 100 
+        $monthlyGrowth = $lastMonthRevenue > 0
+            ? (($monthlyRevenue - $lastMonthRevenue) / $lastMonthRevenue) * 100
             : 0;
 
         return [

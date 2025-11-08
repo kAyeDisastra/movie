@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Booking;
+use App\Models\Order;
 use Carbon\Carbon;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +15,8 @@ class RevenueChartWidget extends ChartWidget
     protected function getData(): array
     {
         $thisYear = Carbon::now()->startOfYear();
-        
-        $monthlyData = Booking::where('status', 'confirmed')
+
+        $monthlyData = Order::where('status', 'confirmed')
             ->where('created_at', '>=', $thisYear)
             ->select(
                 DB::raw('MONTH(created_at) as month'),
