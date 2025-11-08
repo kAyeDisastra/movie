@@ -14,12 +14,12 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
     Route::post('/logout', 'logout')->name('logout')->middleware('auth');
 });
 
-Route::post('/admin/logout', function() {
+Route::post('/admin/logout', function () {
     auth()->logout();
     return redirect('/');
 })->name('filament.admin.auth.logout');
 
-Route::post('/owner/logout', function() {
+Route::post('/owner/logout', function () {
     auth()->logout();
     return redirect('/');
 })->name('filament.owner.auth.logout');

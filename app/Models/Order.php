@@ -12,7 +12,9 @@ class Order extends Model
         'order_time',
         'status',
         'cashier_id',
-        'total_price'
+        'total_price',
+        'order_code',
+        'order_id'
     ];
 
     public $timestamps = false;
