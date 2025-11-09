@@ -47,6 +47,28 @@ class BookingController extends Controller
             $totalAmount = $schedule->price->amount * count($seatIds);
             $orderId = 'ORDER-' . time() . '-' . Auth::id();
 
+            // Get seat codes
+            $seats = DB::table('seats')->whereIn('id', $seatIds)->pluck('seat_code')->toArray();
+            
+            // Create booking for transaction history
+            $booking = \App\Models\Booking::create([
+                'user_id' => Auth::id(),
+                'schedule_id' => $schedule->id,
+                'seats' => $seats,
+                'total_price' => $totalAmount,
+                'status' => 'pending',
+                'booking_code' => 'BK' . str_pad(Auth::id(), 3, '0', STR_PAD_LEFT) . time(),
+            ]);
+
+            $expiredAt = now()->addMinute();
+            foreach ($seatIds as $seatId) {
+                DB::table('seats')->where('id', $seatId)->update([
+                    'status' => 'pending',
+                    'user_id' => Auth::id(),
+                    'reserved_until' => $expiredAt
+                ]);
+            }
+
             $order = Order::create([
                 'user_id' => Auth::id(),
                 'schedule_id' => $schedule->id,
@@ -54,17 +76,10 @@ class BookingController extends Controller
                 'status' => 'pending',
             ]);
 
-            $expiredAt = now()->addHour();
             foreach ($seatIds as $seatId) {
                 OrderDetail::create([
                     'order_id' => $order->id,
                     'seat_id' => $seatId
-                ]);
-
-                DB::table('seats')->where('id', $seatId)->update([
-                    'status' => 'pending',
-                    'user_id' => Auth::id(),
-                    'reserved_until' => $expiredAt
                 ]);
             }
 
@@ -90,7 +105,7 @@ class BookingController extends Controller
         try {
             $params = [
                 'transaction_details' => [
-                    'order_id' => $order->id,
+                    'order_id' => 'ORD-' . date('YmdHis') . '-' . $order->id . '-' . rand(1000, 9999),
                     'gross_amount' => (int)$totalAmount,
                 ],
                 'customer_details' => [
@@ -133,23 +148,101 @@ class BookingController extends Controller
         }
 
         if ($request->transaction_status == 'settlement') {
-            $order = Order::where('order_id', $request->order_id)->first();
-            if ($order) {
-                Payment::where('order_id', $order->id)
-                    ->update(['status' => 'completed', 'payment_time' => now()]);
+            // Extract order ID from transaction order_id (format: ORD-YmdHis-{order_id}-{random})
+            $parts = explode('-', $request->order_id);
+            $orderId = isset($parts[2]) ? $parts[2] : null;
+            
+            if ($orderId) {
+                $order = Order::find($orderId);
+                if ($order) {
+                    Payment::where('order_id', $order->id)
+                        ->update(['status' => 'completed', 'payment_time' => now()]);
 
-                $order->update(['status' => 'confirmed']);
+                    $order->update(['status' => 'confirmed']);
+                    
+                    // Update booking status for transaction history
+                    $booking = \App\Models\Booking::where('user_id', $order->user_id)
+                        ->where('schedule_id', $order->schedule_id)
+                        ->where('status', 'pending')
+                        ->whereBetween('created_at', [
+                            $order->order_time->subMinutes(2),
+                            $order->order_time->addMinutes(2)
+                        ])
+                        ->first();
+                        
+                    if ($booking) {
+                        $booking->update([
+                            'status' => 'confirmed',
+                            'payment_date' => now(),
+                            'payment_method' => 'midtrans'
+                        ]);
+                    }
 
-                $details = OrderDetail::where('order_id', $order->id)->get();
-                foreach ($details as $detail) {
-                    DB::table('seats')->where('id', $detail->seat_id)->update([
-                        'status' => 'booked',
-                        'reserved_until' => null
-                    ]);
+                    $details = OrderDetail::where('order_id', $order->id)->get();
+                    foreach ($details as $detail) {
+                        DB::table('seats')->where('id', $detail->seat_id)->update([
+                            'status' => 'booked',
+                            'reserved_until' => null
+                        ]);
+                    }
                 }
             }
         }
 
         return response()->json(['status' => 'success']);
+    }
+    
+    public function confirmPayment(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required|exists:orders,id'
+        ]);
+        
+        DB::beginTransaction();
+        try {
+            $order = Order::findOrFail($request->order_id);
+            
+            // Update order status
+            $order->update(['status' => 'confirmed']);
+            
+            // Update payment status
+            Payment::where('order_id', $order->id)
+                ->update(['status' => 'completed', 'payment_time' => now()]);
+            
+            // Update booking status for transaction history
+            // Find booking created around the same time as the order
+            $booking = \App\Models\Booking::where('user_id', $order->user_id)
+                ->where('schedule_id', $order->schedule_id)
+                ->where('status', 'pending')
+                ->whereBetween('created_at', [
+                    $order->order_time->subMinutes(2),
+                    $order->order_time->addMinutes(2)
+                ])
+                ->first();
+                
+            if ($booking) {
+                $booking->update([
+                    'status' => 'confirmed',
+                    'payment_date' => now(),
+                    'payment_method' => 'midtrans'
+                ]);
+            }
+            
+            // Update seats status
+            $details = OrderDetail::where('order_id', $order->id)->get();
+            foreach ($details as $detail) {
+                DB::table('seats')->where('id', $detail->seat_id)->update([
+                    'status' => 'booked',
+                    'reserved_until' => null
+                ]);
+            }
+            
+            DB::commit();
+            return response()->json(['success' => true]);
+            
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
     }
 }

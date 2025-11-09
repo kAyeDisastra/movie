@@ -8,6 +8,8 @@ use Filament\Widgets\ChartWidget;
 class FilmsChart extends ChartWidget
 {
     protected ?string $heading = 'Films by Status';
+    protected static ?int $sort = 3;
+    protected int | string | array $columnSpan = 2;
 
     protected function getData(): array
     {

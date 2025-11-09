@@ -1,6 +1,35 @@
 @extends('layouts.app')
 @section('title', 'Studio Detail')
 
+@push('css')
+<style>
+:root{
+    --bg-1: #0b1020;
+    --bg-2: #0f1724;
+    --accent1: #6c63ff;
+    --accent2: #ff6b6b;
+    --accent3: #00e0ff;
+}
+body{background:linear-gradient(180deg,#071021 0%, #07141c 100%);color:#e6eef8;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;min-height:100vh}
+.card { 
+    background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.08);border-radius:20px;
+    backdrop-filter:blur(10px);box-shadow:0 20px 40px rgba(2,6,23,0.8);
+}
+.card-header{background:rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.1);color:#fff}
+.card-body{color:#e6eef8}
+.btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent3));border:none}
+.btn-secondary{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#e6eef8}
+.btn-outline-secondary{border:1px solid rgba(255,255,255,0.2);color:#e6eef8}
+.btn-danger{background:linear-gradient(90deg,var(--accent2),#dc2626);border:none}
+.bg-dark{background:linear-gradient(90deg,var(--accent1),var(--accent3))!important}
+.modal-content{background:var(--bg-2);color:#e6eef8;border:1px solid rgba(255,255,255,0.1)}
+.modal-header{border-bottom:1px solid rgba(255,255,255,0.1)}
+.modal-footer{border-top:1px solid rgba(255,255,255,0.1)}
+h3,h5{color:#fff}
+</style>
+@endpush
+
 @section('content')
     @include('components.navbar')
 
@@ -24,7 +53,7 @@
                                 @foreach($seats as $index => $seat)
                                     <div class="col-1 mb-2">
                                         @if(in_array($seat->id, $bookedSeatIds))
-                                            <button class="btn btn-secondary btn-sm w-100" disabled>
+                                            <button class="btn btn-danger btn-sm w-100" disabled>
                                                 {{ $seat->seat_code }}
                                             </button>
                                         @elseif(in_array($seat->id, $pendingSeatIds))
@@ -88,7 +117,7 @@
                                     <small>Menunggu Pembayaran</small>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="btn btn-secondary btn-sm me-2" style="width: 30px; height: 30px;"></div>
+                                    <div class="btn btn-danger btn-sm me-2" style="width: 30px; height: 30px;"></div>
                                     <small>Terisi</small>
                                 </div>
                             </div>
@@ -253,7 +282,8 @@
                                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                                 },
                                 body: JSON.stringify({order_id: data.order_id})
-                            }).then(() => {
+                            }).then(response => response.json()).then(confirmResult => {
+                                console.log('Confirm result:', confirmResult);
                                 selectedSeats.forEach(seat => {
                                     const btn = document.querySelector(`[data-seat-id="${seat.id}"]`);
                                     if (btn) {

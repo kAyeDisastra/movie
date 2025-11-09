@@ -10,9 +10,32 @@ class StudioController extends Controller
 {
     public function index()
     {
-        $data['studios'] = Studio::all();
-
-        return view('studios', $data);
+        // Auto cleanup expired seats and bookings
+        \DB::table('seats')
+            ->where('status', 'pending')
+            ->where('reserved_until', '<', now())
+            ->update([
+                'status' => 'available',
+                'user_id' => null,
+                'reserved_until' => null
+            ]);
+            
+        $expiredBookings = \App\Models\Booking::where('status', 'pending')
+            ->where('created_at', '<', now()->subMinute())
+            ->get();
+            
+        foreach ($expiredBookings as $booking) {
+            $booking->update(['status' => 'expired']);
+        }
+        
+        $studios = Studio::with(['schedules' => function($query) {
+            $query->with('film')
+                  ->whereDate('show_date', '>=', today())
+                  ->orderBy('show_date')
+                  ->orderBy('show_time');
+        }])->get();
+        
+        return view('studios', compact('studios'));
     }
 
     public function show($id, Request $request)
@@ -36,6 +59,7 @@ class StudioController extends Controller
             return redirect()->route('studios')->with('error', 'Tidak ada jadwal untuk studio ini');
         }
 
+        // Auto cleanup expired seats
         \DB::table('seats')
             ->where('status', 'pending')
             ->where('reserved_until', '<', now())
@@ -44,6 +68,15 @@ class StudioController extends Controller
                 'user_id' => null,
                 'reserved_until' => null
             ]);
+            
+        // Auto expire bookings
+        $expiredBookings = \App\Models\Booking::where('status', 'pending')
+            ->where('created_at', '<', now()->subMinute())
+            ->get();
+            
+        foreach ($expiredBookings as $booking) {
+            $booking->update(['status' => 'expired']);
+        }
 
         $seats = $schedule->seats()->get();
         $bookedSeatIds = $seats->where('status', 'booked')->pluck('id')->toArray();

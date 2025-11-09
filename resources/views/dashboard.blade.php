@@ -147,8 +147,8 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
             <div class="hero-carousel fade-up" style="display:flex;justify-content:center;">
                 <div class="carousel-container" style="width:800px;height:450px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 30px 80px rgba(2,6,23,0.8);position:relative;">
                     @foreach($films as $index => $film)
-                    <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}" style="position:absolute;inset:0;opacity:{{ $index === 0 ? '1' : '0' }};transition:opacity 1.5s ease-in-out;cursor:pointer;" onclick="window.location.href='{{ route('films.schedules', $film->id) }}'">
-                        <img src="{{ $film->poster_image ? asset('storage/uploads/' . $film->poster_image) : 'https://picsum.photos/800/450?random=' . $film->id }}" alt="{{ $film->title }}" style="width:100%;height:100%;object-fit:cover;">
+                    <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}" data-film-id="{{ $film->id }}" style="position:absolute;inset:0;opacity:{{ $index === 0 ? '1' : '0' }};transition:opacity 1.5s ease-in-out;cursor:pointer;">
+                        <img src="{{ $film->poster_image ? Storage::url($film->poster_image) : asset('images/placeholder.svg') }}" alt="{{ $film->title }}" style="width:100%;height:100%;object-fit:cover;">
                         <div style="position:absolute;inset:0;background:linear-gradient(45deg,rgba(0,0,0,0.3),transparent 50%,rgba(0,0,0,0.6));">
                             <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.9));padding:2rem;">
                                 <h2 style="color:white;margin:0 0 .5rem 0;font-size:2.5rem;font-weight:800;">{{ $film->title }}</h2>
@@ -196,7 +196,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                 @forelse($films as $item)
                 <article class="movie-card fade-up" tabindex="0" onclick="window.location.href='{{ route('films.schedules', $item->id) }}'" style="cursor: pointer;">
                     <div class="poster-wrap">
-                        <img src="{{ $item->poster_image ? Storage::url($item->poster_image) : 'https://picsum.photos/300/450?random=' . $item->id }}" alt="Poster {{ $item->title }}">
+                        <img src="{{ $item->poster_image ? Storage::url($item->poster_image) : asset('images/placeholder.svg') }}" alt="Poster {{ $item->title }}">
                         <div class="poster-overlay">
                             <div style="display:flex;justify-content:space-between;align-items:center;">
                                 <button class="play-btn" data-trailer="{{ $item->trailer_url }}" aria-label="Putar trailer {{ $item->title }}" onclick="event.stopPropagation()">
@@ -204,7 +204,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                                     Trailer
                                 </button>
 
-                                <a href="{{ auth()->check() ? route('studios.show', $item->schedules->first()->studio_id ?? 1) : route('login') }}" class="order-btn" onclick="event.stopPropagation()">Pesan</a>
+                                <a href="{{ auth()->check() ? route('films.schedules', $item->id) : route('login') }}" class="order-btn" onclick="event.stopPropagation()">Pesan</a>
                             </div>
                             <div style="display:flex;gap:.5rem;align-items:center;margin-top:.6rem">
                                 @foreach(array_slice(is_array($item->genre) ? $item->genre : json_decode($item->genre ?? '[]', true), 0, 2) as $genre)
@@ -248,7 +248,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 
                         <div class="action-row">
                             @foreach ($item->schedules->take(4) as $schedule)
-                                <a href="{{ auth()->check() ? route('studios.show', $schedule->studio_id ?? 1) : route('login') }}" class="time-btn" onclick="event.stopPropagation()">{{ \Carbon\Carbon::parse($schedule->show_time)->format('H:i') }}</a>
+                                <a href="{{ auth()->check() ? route('films.schedules', $item->id) : route('login') }}" class="time-btn" onclick="event.stopPropagation()">{{ \Carbon\Carbon::parse($schedule->show_time)->format('H:i') }}</a>
                             @endforeach
                             @if($item->schedules->count() > 4)
                                 <span style="color:rgba(230,238,248,0.6);font-size:.8rem;padding:.45rem .9rem">+{{ $item->schedules->count() - 4 }} lainnya</span>
@@ -268,10 +268,12 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
     </main>
 
     <!-- Trailer Modal (hidden) -->
-    <div id="trailer-modal" style="position:fixed;top:0;left:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;z-index:9999;padding:2rem;background:rgba(0,0,0,0.8);">
-        <div style="width:min(1100px,95%);max-height:80vh;background:#000;border-radius:12px;overflow:hidden;position:relative;margin:auto;">
-            <button id="modal-close" style="position:absolute;right:12px;top:8px;z-index:5;background:transparent;border:none;color:#fff;font-size:1.25rem;padding:.6rem">✕</button>
-            <div id="trailer-container" style="width:100%;height:0;padding-bottom:56.25%;position:relative;"></div>
+    <div id="trailer-modal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;display:none;align-items:center;justify-content:center;z-index:9999;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);">
+        <div style="width:90vw;height:90vh;background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(2,6,23,0.9);">
+            <button id="modal-close" style="position:absolute;right:20px;top:20px;z-index:10;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.5rem;padding:12px 16px;border-radius:50%;width:50px;height:50px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s ease;">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="trailer-container" style="width:100%;height:100%;position:relative;border-radius:20px;overflow:hidden;"></div>
         </div>
     </div>
 
@@ -345,12 +347,12 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                     const url = new URL(src);
                     id = url.searchParams.get('v');
                 }
-                embed = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" style="position:absolute;inset:0;border:0;" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+                embed = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
             } else if(src.endsWith('.mp4') || src.endsWith('.webm')){
-                embed = `<video src="${src}" controls autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>`;
+                embed = `<video src="${src}" controls autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"></video>`;
             } else {
                 // fallback: try iframe
-                embed = `<iframe src="${src}" style="position:absolute;inset:0;border:0;" allowfullscreen></iframe>`;
+                embed = `<iframe src="${src}" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allowfullscreen></iframe>`;
             }
 
             container.innerHTML = embed;
@@ -362,6 +364,23 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 
 // Keyboard accessibility: close modal with Esc
 document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal = document.getElementById('trailer-modal'); if(modal && modal.style.display==='flex'){ modal.style.display='none'; document.getElementById('trailer-container').innerHTML=''; document.body.style.overflow=''; } } });
+
+// Add hover effect to close button
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.getElementById('modal-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('mouseenter', function() {
+            this.style.background = 'rgba(255,107,107,0.2)';
+            this.style.borderColor = 'rgba(255,107,107,0.4)';
+            this.style.transform = 'scale(1.1)';
+        });
+        closeBtn.addEventListener('mouseleave', function() {
+            this.style.background = 'rgba(255,255,255,0.1)';
+            this.style.borderColor = 'rgba(255,255,255,0.2)';
+            this.style.transform = 'scale(1)';
+        });
+    }
+});
 
 // Header toggle functionality
 (function(){
@@ -502,6 +521,16 @@ document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal 
 
     // Start auto-advance
     startAutoAdvance();
+    
+    // Add click handler for carousel slides
+    slides.forEach(slide => {
+        slide.addEventListener('click', function() {
+            const filmId = this.getAttribute('data-film-id');
+            if (filmId) {
+                window.location.href = `/films/${filmId}/schedules`;
+            }
+        });
+    });
 })();
 </script>
 @endpush

@@ -73,16 +73,7 @@ body{background:var(--bg-1);color:#e6eef8;font-family:Inter,system-ui,-apple-sys
         <div class="film-detail-card" style="background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;backdrop-filter:blur(10px);">
             <div class="film-info">
                 <div class="poster-large" style="width:200px;height:300px;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(2,6,23,0.8);">
-                    @php
-                        $posterMap = [
-                            'Avengers: Endgame' => 'images/avengers-endgame.jpg',
-                            'Spider-Man: No Way Home' => 'images/spiderman-nwh.jpg', 
-                            'The Batman' => 'images/the-batman.jpg',
-                            'Shawshank Redemption' => 'images/shawshank.jpg'
-                        ];
-                        $posterPath = $posterMap[$film->title] ?? 'images/placeholder.svg';
-                    @endphp
-                    <img src="{{ asset($posterPath) }}" alt="{{ $film->title }}" style="width:100%;height:100%;object-fit:cover;">
+                    <img src="{{ $film->poster_image ? Storage::url($film->poster_image) : asset('images/placeholder.svg') }}" alt="{{ $film->title }}" style="width:100%;height:100%;object-fit:cover;">
                 </div>
                 <div class="film-details" style="flex:1;">
                     <!-- Status Badge -->

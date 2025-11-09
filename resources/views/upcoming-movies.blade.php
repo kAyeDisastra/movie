@@ -53,6 +53,7 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 /* overlay on hover */
 .poster-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%, rgba(2,6,23,0.6));display:flex;flex-direction:column;justify-content:flex-end;padding:1rem;gap:.5rem;opacity:0;transition:opacity .28s ease}
 .movie-card:hover .poster-overlay{opacity:1}
+.play-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.5rem 1rem;border-radius:999px;background:linear-gradient(90deg,var(--accent3),var(--accent1));color:#031026;font-weight:800;box-shadow:0 6px 18px rgba(0,224,255,0.12);border:none}
 .coming-soon-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.2rem;border-radius:999px;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#fff;font-weight:800;box-shadow:0 6px 18px rgba(255,107,107,0.15);border:none;font-size:.85rem}
 .meta{padding:1rem 1.25rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
 .title{font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:.4rem}
@@ -105,15 +106,20 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
                 <article class="movie-card fade-up" tabindex="0">
                     <div class="poster-wrap">
                         <a href="{{ route('films.show', $item->id) }}" aria-label="Lihat detail {{ $item->title }}">
-                            <img src="{{ asset('storage/' . $item->poster_image) }}" alt="Poster {{ $item->title }}">
+                            <img src="{{ $item->poster_image ? Storage::url($item->poster_image) : asset('images/placeholder.svg') }}" alt="Poster {{ $item->title }}">
                         </a>
 
                         <div class="poster-overlay">
-                            <div style="display:flex;justify-content:center;align-items:center;">
-                                <div class="coming-soon-badge">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    Coming Soon
-                                </div>
+                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                <button class="play-btn" data-trailer="{{ $item->trailer_url }}" aria-label="Putar trailer {{ $item->title }}" onclick="event.stopPropagation()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3v18l15-9L5 3z" fill="#001018"/></svg>
+                                    Trailer
+                                </button>
+                                
+                                <a href="{{ route('films.show', $item->id) }}" class="coming-soon-badge" onclick="event.stopPropagation()" style="text-decoration:none;">
+                                    <i class="fas fa-info-circle"></i>
+                                    Detail
+                                </a>
                             </div>
                             <div style="display:flex;gap:.5rem;align-items:center;margin-top:.6rem;justify-content:center;">
                                 @foreach(array_slice(is_array($item->genre) ? $item->genre : json_decode($item->genre ?? '[]', true), 0, 2) as $genre)
@@ -156,6 +162,16 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
         </div>
     </main>
 
+    <!-- Trailer Modal (hidden) -->
+    <div id="trailer-modal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;display:none;align-items:center;justify-content:center;z-index:9999;background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);">
+        <div style="width:90vw;height:90vh;background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(2,6,23,0.9);">
+            <button id="modal-close" style="position:absolute;right:20px;top:20px;z-index:10;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.5rem;padding:12px 16px;border-radius:50%;width:50px;height:50px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s ease;">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="trailer-container" style="width:100%;height:100%;position:relative;border-radius:20px;overflow:hidden;"></div>
+        </div>
+    </div>
+
 @endsection
 
 @push('js')
@@ -187,5 +203,74 @@ main{padding:4rem 0;background:linear-gradient(180deg,#071021 0%, #07141c 100%)}
 
     document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
 })();
+
+// Trailer modal handling
+(function(){
+    const modal = document.getElementById('trailer-modal');
+    const container = document.getElementById('trailer-container');
+    const closeBtn = document.getElementById('modal-close');
+
+    function closeModal(){
+        modal.style.display = 'none';
+        container.innerHTML = '';
+        document.body.style.overflow = '';
+    }
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    modal && modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+
+    document.querySelectorAll('.play-btn').forEach(btn=>{
+        btn.addEventListener('click', function(e){
+            e.preventDefault();
+            const src = btn.getAttribute('data-trailer') || '';
+            if(!src || src.trim() === ''){
+                const t = document.createElement('div');
+                t.textContent = 'Trailer belum tersedia';
+                t.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:24px;padding:.6rem 1rem;background:#111;border-radius:8px;color:#fff;z-index:9999;opacity:0.95';
+                document.body.appendChild(t);
+                setTimeout(()=>t.remove(),1800);
+                return;
+            }
+
+            let embed = '';
+            if(src.includes('youtube.com') || src.includes('youtu.be')){
+                let id = '';
+                if(src.includes('youtu.be')) id = src.split('/').pop();
+                else{
+                    const url = new URL(src);
+                    id = url.searchParams.get('v');
+                }
+                embed = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:20px;" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+            } else if(src.endsWith('.mp4') || src.endsWith('.webm')){
+                embed = `<video src="${src}" controls autoplay style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;border-radius:20px;"></video>`;
+            } else {
+                embed = `<iframe src="${src}" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:20px;" allowfullscreen></iframe>`;
+            }
+
+            container.innerHTML = embed;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        })
+    })
+})();
+
+// Keyboard accessibility: close modal with Esc
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ const modal = document.getElementById('trailer-modal'); if(modal && modal.style.display==='flex'){ modal.style.display='none'; document.getElementById('trailer-container').innerHTML=''; document.body.style.overflow=''; } } });
+
+// Add hover effect to close button
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.getElementById('modal-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('mouseenter', function() {
+            this.style.background = 'rgba(255,107,107,0.2)';
+            this.style.borderColor = 'rgba(255,107,107,0.4)';
+            this.style.transform = 'scale(1.1)';
+        });
+        closeBtn.addEventListener('mouseleave', function() {
+            this.style.background = 'rgba(255,255,255,0.1)';
+            this.style.borderColor = 'rgba(255,255,255,0.2)';
+            this.style.transform = 'scale(1)';
+        });
+    }
+});
 </script>
 @endpush

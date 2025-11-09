@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(102, 126, 234, 0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+<nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(255, 107, 107, 0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
     <div class="container">
-        <a class="navbar-brand fw-bold text-white" href="{{ route('dashboard') }}">
-            <i class="fas fa-film me-2"></i>{{ config('app.name') }}
+        <a class="navbar-brand fw-bold text-white" href="{{ route('cashier.dashboard') }}">
+            <i class="fas fa-cash-register me-2"></i>Kasir {{ config('app.name') }}
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -11,45 +11,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('dashboard') }}">
-                        <i class="fas fa-home me-1"></i>Beranda
+                    <a class="nav-link text-white" href="{{ route('cashier.dashboard') }}">
+                        <i class="fas fa-tachometer-alt me-1"></i>Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('upcoming.movies') }}">
-                        <i class="fas fa-calendar me-1"></i>Film Mendatang
-                    </a>
-                </li>
-                @auth
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('studios') }}">
-                        <i class="fas fa-tv me-1"></i>Studio
-                    </a>
-                </li>
-                @if(auth()->user()->role === 'cashier')
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('cashier.transactions') }}">
-                        <i class="fas fa-history me-1"></i>Riwayat
+                        <i class="fas fa-receipt me-1"></i>Transaksi
                     </a>
                 </li>
-                @else
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('transactions') }}">
-                        <i class="fas fa-history me-1"></i>Riwayat
-                    </a>
-                </li>
-                @endif
-                @endauth
             </ul>
             
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                        <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px; font-size: 14px; font-weight: bold;">
+                        <div class="rounded-circle bg-white text-danger d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px; font-size: 14px; font-weight: bold;">
                             {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                         </div>
                         {{ Auth::user()->name }}
+                        <span class="badge bg-warning text-dark ms-2">KASIR</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                         <li>
@@ -68,14 +48,6 @@
                         </li>
                     </ul>
                 </li>
-                @else
-                <li class="nav-item me-2">
-                    <a class="btn btn-outline-light rounded-pill px-3" href="{{ route('login') }}">Masuk</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-light rounded-pill px-3" href="{{ route('register') }}">Daftar</a>
-                </li>
-                @endauth
             </ul>
         </div>
     </div>

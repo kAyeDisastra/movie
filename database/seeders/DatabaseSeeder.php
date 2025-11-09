@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PriceSeeder::class,
             ScheduleSeeder::class,
             SeatSeeder::class,
+            BookingSeeder::class,
 //            OrderSeeder::class,
 //            PaymentSeeder::class,
 //            InvoiceSeeder::class,

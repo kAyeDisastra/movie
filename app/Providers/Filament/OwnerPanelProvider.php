@@ -39,6 +39,8 @@ class OwnerPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Owner/Widgets'), for: 'App\Filament\Owner\Widgets')
             ->widgets([
                 \App\Filament\Owner\Widgets\StatsOverview::class,
+                \App\Filament\Owner\Widgets\YearlyRevenueChart::class,
+                \App\Filament\Owner\Widgets\TopFilmsWidget::class,
                 \App\Filament\Owner\Widgets\FilmsChart::class,
                 AccountWidget::class,
             ])

@@ -10,6 +10,20 @@
     <title>{{ config('app.name')  }} | @yield('title')</title>
 </head>
 <body>
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show position-fixed" style="top: 80px; right: 20px; z-index: 9999;" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+    
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show position-fixed" style="top: 80px; right: 20px; z-index: 9999;" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+    
     @yield('content')
 
     <script src="{{ asset('js/jquery.js')  }}"></script>
